@@ -7,6 +7,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/nauhalf/mobilcantik/controller/auth"
+	"github.com/nauhalf/mobilcantik/controller/city"
 	"github.com/nauhalf/mobilcantik/controller/condition"
 	"github.com/nauhalf/mobilcantik/controller/facility"
 	"github.com/nauhalf/mobilcantik/controller/fuel"
@@ -118,6 +119,17 @@ func InitRoutes(e *echo.Echo) {
 		}
 
 		v1.GET("/province/:id", province.GetById, custommiddleware.JWT())
+
+		// --------------------------------------------------------
+		// GROUP City
+		// --------------------------------------------------------
+
+		cities := v1.Group("/cities", custommiddleware.JWT())
+		{
+			cities.GET("", city.GetAll)
+		}
+
+		v1.GET("/city/:id", city.GetById, custommiddleware.JWT())
 
 	}
 }
