@@ -6,6 +6,7 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"github.com/nauhalf/mobilcantik/controller/adclosingreason"
 	"github.com/nauhalf/mobilcantik/controller/adstatustype"
 	"github.com/nauhalf/mobilcantik/controller/adtype"
 	"github.com/nauhalf/mobilcantik/controller/auth"
@@ -175,6 +176,20 @@ func InitRoutes(e *echo.Echo) {
 		}
 
 		v1.GET("/adstatustype/:id", adstatustype.GetById, custommiddleware.JWT())
+
+		// --------------------------------------------------------
+		// GROUP Ad Closing Reason
+		// --------------------------------------------------------
+
+		adclosingreasons := v1.Group("/adclosingreasons", custommiddleware.JWT())
+		{
+			adclosingreasons.GET("", adclosingreason.GetAll)
+			adclosingreasons.POST("", adclosingreason.Create, custommiddleware.JWTUserCredential)
+			adclosingreasons.PATCH("", adclosingreason.Update, custommiddleware.JWTUserCredential)
+			adclosingreasons.DELETE("/:id", adclosingreason.Delete, custommiddleware.JWTUserCredential)
+		}
+
+		v1.GET("/adclosingreason/:id", adclosingreason.GetById, custommiddleware.JWT())
 
 	}
 }
