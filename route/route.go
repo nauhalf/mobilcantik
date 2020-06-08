@@ -7,6 +7,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/nauhalf/mobilcantik/controller/auth"
+	"github.com/nauhalf/mobilcantik/controller/bankaccount"
 	"github.com/nauhalf/mobilcantik/controller/city"
 	"github.com/nauhalf/mobilcantik/controller/condition"
 	"github.com/nauhalf/mobilcantik/controller/facility"
@@ -130,6 +131,16 @@ func InitRoutes(e *echo.Echo) {
 		}
 
 		v1.GET("/city/:id", city.GetById, custommiddleware.JWT())
+
+		bankaccounts := v1.Group("/bankaccounts", custommiddleware.JWT())
+		{
+			bankaccounts.GET("", bankaccount.GetAll)
+			bankaccounts.POST("", bankaccount.Create, custommiddleware.JWTUserCredential)
+			bankaccounts.PATCH("", bankaccount.Update, custommiddleware.JWTUserCredential)
+			bankaccounts.DELETE("/:id", bankaccount.Delete, custommiddleware.JWTUserCredential)
+		}
+
+		v1.GET("/bankaccount/:id", bankaccount.GetById, custommiddleware.JWT())
 
 	}
 }
