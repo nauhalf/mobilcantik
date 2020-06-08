@@ -18,6 +18,7 @@ import (
 	"github.com/nauhalf/mobilcantik/controller/partner"
 	"github.com/nauhalf/mobilcantik/controller/province"
 	"github.com/nauhalf/mobilcantik/controller/reportgroup"
+	"github.com/nauhalf/mobilcantik/controller/reporttype"
 	"github.com/nauhalf/mobilcantik/controller/vehiclebrand"
 	"github.com/nauhalf/mobilcantik/controller/vehicletype"
 	custommiddleware "github.com/nauhalf/mobilcantik/middleware"
@@ -220,6 +221,20 @@ func InitRoutes(e *echo.Echo) {
 		}
 
 		v1.GET("/reportgroup/:id", reportgroup.GetById, custommiddleware.JWT())
+
+		// --------------------------------------------------------
+		// GROUP Report Type
+		// --------------------------------------------------------
+
+		reporttypes := v1.Group("/reporttypes", custommiddleware.JWT())
+		{
+			reporttypes.GET("", reporttype.GetAll)
+			reporttypes.POST("", reporttype.Create, custommiddleware.JWTUserCredential)
+			reporttypes.PATCH("", reporttype.Update, custommiddleware.JWTUserCredential)
+			reporttypes.DELETE("/:id", reporttype.Delete, custommiddleware.JWTUserCredential)
+		}
+
+		v1.GET("/reporttype/:id", reporttype.GetById, custommiddleware.JWT())
 
 	}
 }

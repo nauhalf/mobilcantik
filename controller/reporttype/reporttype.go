@@ -1,4 +1,4 @@
-package bankaccount
+package reporttype
 
 import (
 	"net/http"
@@ -7,33 +7,34 @@ import (
 	"github.com/go-sql-driver/mysql"
 	"github.com/labstack/echo/v4"
 	"github.com/nauhalf/mobilcantik/db"
-	"github.com/nauhalf/mobilcantik/repository/bankaccountrepository"
 	"github.com/nauhalf/mobilcantik/repository/model"
+	"github.com/nauhalf/mobilcantik/repository/reportgrouprepository"
+	"github.com/nauhalf/mobilcantik/repository/reporttyperepository"
 	"github.com/nauhalf/mobilcantik/response"
 	errorutils "github.com/nauhalf/mobilcantik/utils/error"
 )
 
 type RequestCreate struct {
-	BankAccountNumber string `json:"szBankAccountNumber" form:"szBankAccountNumber" query:"szBankAccountNumber" validate:"required"`
-	BankCode          string `json:"szBankCode" form:"szBankCode" query:"szBankCode" validate:"required"`
-	BankAccountName   string `json:"szBankAccountName" form:"szBankAccountName" query:"szBankAccountName" validate:"required"`
+	ReportTypeName string  `json:"szReportTypeName" form:"szReportTypeName" query:"szReportTypeName" validate:"required"`
+	Annotation     *string `json:"szAnnotation" form:"szAnnotation" query:"szAnnotation"`
+	ReportGroupId  uint64  `json:"intReportGroupId" form:"intReportGroupId" query:"intReportGroupId" validate:"required"`
 }
 
 type RequestUpdate struct {
-	BankAccountId uint64 `json:"intBankAccountId" form:"intBankAccountId" query:"intBankAccountId" validate:"required"`
-	IsActive      string `json:"isActive" form:"isActive" query:"isActive" validate:"required"`
+	ReportTypeId uint64 `json:"intReportTypeId" form:"intReportTypeId" query:"intReportTypeId" validate:"required"`
 	RequestCreate
 }
 
 func GetAll(c echo.Context) error {
 
-	is_active := c.QueryParam("isactive")
-	var isActive *bool
-
-	if is_active == "" {
-		isActive = nil
+	groupid := c.QueryParam("reportgroup_id")
+	var id *uint64
+	if groupid == "" {
+		id = nil
 	} else {
-		tmpIsActive, err := strconv.ParseBool(is_active)
+
+		intId, err := strconv.ParseUint(groupid, 10, 64)
+
 		if err != nil {
 			resp := response.ResponseError{
 				Code:      http.StatusInternalServerError,
@@ -42,10 +43,10 @@ func GetAll(c echo.Context) error {
 			}
 			return c.JSON(resp.Code, resp)
 		}
-		isActive = &tmpIsActive
+		id = &intId
 	}
 
-	banks, err := bankaccountrepository.GetAll(db.DBCon, isActive)
+	reporttypes, err := reporttyperepository.GetAll(db.DBCon, id)
 
 	if err != nil {
 		resp := response.ResponseError{
@@ -56,20 +57,15 @@ func GetAll(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, resp)
 	}
 
-	if banks == nil {
-		banks = []model.BankAccount{}
-	}
-
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "List bank account successfully retrieved",
-		Data:    banks,
+		Message: "List Report Types successfully retrieved",
+		Data:    reporttypes,
 	}
 	return c.JSON(http.StatusOK, resp)
 }
 
 func Create(c echo.Context) error {
-
 	r := new(RequestCreate)
 
 	if err := c.Bind(r); err != nil {
@@ -90,12 +86,11 @@ func Create(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	bankaccount := new(model.BankAccount)
-	bankaccount.BankAccountNumber = r.BankAccountNumber
-	bankaccount.BankCode = r.BankCode
-	bankaccount.BankAccountName = r.BankAccountName
-
-	newbank, err := bankaccountrepository.Create(db.DBCon, bankaccount)
+	rt := new(model.ReportType)
+	rt.ReportTypeName = r.ReportTypeName
+	rt.ReportGroupId = r.ReportGroupId
+	rt.Annotation = r.Annotation
+	newReportType, err := reporttyperepository.Create(db.DBCon, rt)
 	if err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusInternalServerError,
@@ -107,8 +102,8 @@ func Create(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusCreated,
-		Message: "Bank Account successfully created",
-		Data:    newbank,
+		Message: "Report Type successfully created",
+		Data:    newReportType,
 	}
 
 	return c.JSON(resp.Code, resp)
@@ -136,9 +131,9 @@ func Update(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	exists, _ := bankaccountrepository.GetById(db.DBCon, r.BankAccountId)
+	rtExists, _ := reporttyperepository.GetById(db.DBCon, r.ReportTypeId)
 
-	if exists == nil {
+	if rtExists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
 			Message:   http.StatusText(http.StatusNotFound),
@@ -147,26 +142,24 @@ func Update(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	isActive, err := strconv.ParseBool(r.IsActive)
+	rgExists, _ := reportgrouprepository.GetById(db.DBCon, r.ReportGroupId)
 
-	if err != nil {
+	if rgExists == nil {
 		resp := response.ResponseError{
-			Code:      http.StatusInternalServerError,
-			Message:   http.StatusText(http.StatusInternalServerError),
-			ErrorCode: nil,
+			Code:      http.StatusNotFound,
+			Message:   http.StatusText(http.StatusNotFound),
+			ErrorCode: 2,
 		}
 		return c.JSON(resp.Code, resp)
 	}
 
-	bankaccount := new(model.BankAccount)
-	bankaccount.BankAccountId = r.BankAccountId
-	bankaccount.BankAccountNumber = r.BankAccountNumber
-	bankaccount.BankCode = r.BankCode
-	bankaccount.BankAccountName = r.BankAccountName
+	rt := new(model.ReportType)
+	rt.ReportTypeId = r.ReportTypeId
+	rt.ReportGroupId = r.ReportGroupId
+	rt.ReportTypeName = r.ReportTypeName
+	rt.Annotation = r.Annotation
 
-	bankaccount.IsActive = isActive
-
-	err = bankaccountrepository.Update(db.DBCon, bankaccount)
+	err := reporttyperepository.Update(db.DBCon, rt)
 
 	if err != nil {
 		resp := response.ResponseError{
@@ -179,7 +172,7 @@ func Update(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Bank Account successfully updated",
+		Message: "Report Type successfully updated",
 		Data:    nil,
 	}
 
@@ -188,9 +181,9 @@ func Update(c echo.Context) error {
 
 func Delete(c echo.Context) error {
 
-	cID := c.Param("id")
+	fID := c.Param("id")
 
-	if cID == "" {
+	if fID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
 			Message:   http.StatusText(http.StatusUnprocessableEntity),
@@ -199,7 +192,7 @@ func Delete(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	intID, err := strconv.ParseUint(cID, 10, 64)
+	intID, err := strconv.ParseUint(fID, 10, 64)
 	if err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusInternalServerError,
@@ -208,8 +201,7 @@ func Delete(c echo.Context) error {
 		}
 		return c.JSON(resp.Code, resp)
 	}
-
-	err = bankaccountrepository.Delete(db.DBCon, intID)
+	err = reporttyperepository.Delete(db.DBCon, intID)
 
 	if err != nil {
 		if err.Error() == errorutils.StatusZeroAffectedRows {
@@ -222,7 +214,7 @@ func Delete(c echo.Context) error {
 		} else if err.(*mysql.MySQLError).Number == errorutils.ErrorMySQLDeleteConstraintFK {
 			resp := response.ResponseError{
 				Code:      http.StatusConflict,
-				Message:   "Bank Account is already in used, failed to delete it.",
+				Message:   "Report Type is already in used, failed to delete it.",
 				ErrorCode: nil,
 			}
 			return c.JSON(resp.Code, resp)
@@ -238,7 +230,7 @@ func Delete(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Bank Account successfully deleted",
+		Message: "Report Type successfully deleted",
 		Data:    nil,
 	}
 
@@ -247,9 +239,9 @@ func Delete(c echo.Context) error {
 
 func GetById(c echo.Context) error {
 
-	cID := c.Param("id")
+	fID := c.Param("id")
 
-	if cID == "" {
+	if fID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
 			Message:   http.StatusText(http.StatusUnprocessableEntity),
@@ -258,7 +250,7 @@ func GetById(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	intID, err := strconv.ParseUint(cID, 10, 64)
+	intID, err := strconv.ParseUint(fID, 10, 64)
 
 	if err != nil {
 		resp := response.ResponseError{
@@ -269,9 +261,9 @@ func GetById(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	bankaccount, err := bankaccountrepository.GetById(db.DBCon, intID)
+	reporttype, err := reporttyperepository.GetById(db.DBCon, intID)
 
-	if bankaccount == nil {
+	if reporttype == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
 			Message:   http.StatusText(http.StatusNotFound),
@@ -291,8 +283,8 @@ func GetById(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Bank Account successfully retrieved",
-		Data:    bankaccount,
+		Message: "Report Type successfully retrieved",
+		Data:    reporttype,
 	}
 	return c.JSON(http.StatusOK, resp)
 }

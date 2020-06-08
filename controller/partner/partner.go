@@ -141,7 +141,7 @@ func Update(c echo.Context) error {
 	}
 
 	resp := response.ResponseSuccess{
-		Code:    http.StatusCreated,
+		Code:    http.StatusOK,
 		Message: "Partner successfully updated",
 		Data:    nil,
 	}
@@ -193,7 +193,7 @@ func Delete(c echo.Context) error {
 	}
 
 	resp := response.ResponseSuccess{
-		Code:    http.StatusCreated,
+		Code:    http.StatusOK,
 		Message: "Partner successfully deleted",
 		Data:    nil,
 	}

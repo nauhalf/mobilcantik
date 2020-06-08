@@ -139,7 +139,7 @@ func Update(c echo.Context) error {
 	}
 
 	resp := response.ResponseSuccess{
-		Code:    http.StatusCreated,
+		Code:    http.StatusOK,
 		Message: "Ad Closing Reason successfully updated",
 		Data:    nil,
 	}
@@ -198,7 +198,7 @@ func Delete(c echo.Context) error {
 	}
 
 	resp := response.ResponseSuccess{
-		Code:    http.StatusCreated,
+		Code:    http.StatusOK,
 		Message: "Ad Closing Reason successfully deleted",
 		Data:    nil,
 	}

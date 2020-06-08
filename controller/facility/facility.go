@@ -137,7 +137,7 @@ func Update(c echo.Context) error {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
 			Message:   http.StatusText(http.StatusNotFound),
-			ErrorCode: 2,
+			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
 	}
@@ -171,7 +171,7 @@ func Update(c echo.Context) error {
 	}
 
 	resp := response.ResponseSuccess{
-		Code:    http.StatusCreated,
+		Code:    http.StatusOK,
 		Message: "Facility successfully updated",
 		Data:    nil,
 	}
@@ -229,7 +229,7 @@ func Delete(c echo.Context) error {
 	}
 
 	resp := response.ResponseSuccess{
-		Code:    http.StatusCreated,
+		Code:    http.StatusOK,
 		Message: "Facility successfully deleted",
 		Data:    nil,
 	}
