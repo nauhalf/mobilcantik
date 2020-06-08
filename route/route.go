@@ -10,6 +10,7 @@ import (
 	"github.com/nauhalf/mobilcantik/controller/condition"
 	"github.com/nauhalf/mobilcantik/controller/facility"
 	"github.com/nauhalf/mobilcantik/controller/fuel"
+	"github.com/nauhalf/mobilcantik/controller/province"
 	"github.com/nauhalf/mobilcantik/controller/vehiclebrand"
 	"github.com/nauhalf/mobilcantik/controller/vehicletype"
 	custommiddleware "github.com/nauhalf/mobilcantik/middleware"
@@ -106,6 +107,17 @@ func InitRoutes(e *echo.Echo) {
 		}
 
 		v1.GET("/facility/:id", facility.GetById, custommiddleware.JWT())
+
+		// --------------------------------------------------------
+		// GROUP Province
+		// --------------------------------------------------------
+
+		provinces := v1.Group("/provinces", custommiddleware.JWT())
+		{
+			provinces.GET("", province.GetAll)
+		}
+
+		v1.GET("/province/:id", province.GetById, custommiddleware.JWT())
 
 	}
 }
