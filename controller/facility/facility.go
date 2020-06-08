@@ -1,4 +1,4 @@
-package vehiclebrand
+package facility
 
 import (
 	"net/http"
@@ -7,21 +7,21 @@ import (
 	"github.com/go-sql-driver/mysql"
 	"github.com/labstack/echo/v4"
 	"github.com/nauhalf/mobilcantik/db"
+	"github.com/nauhalf/mobilcantik/repository/facilityrepository"
 	"github.com/nauhalf/mobilcantik/repository/model"
-	"github.com/nauhalf/mobilcantik/repository/vehiclebrandrepository"
 	"github.com/nauhalf/mobilcantik/repository/vehicletyperepository"
 	"github.com/nauhalf/mobilcantik/response"
 	errorutils "github.com/nauhalf/mobilcantik/utils/error"
 )
 
 type RequestCreate struct {
-	VehicleBrandName string  `json:"szBrandName" form:"szBrandName" query:"szBrandName" validate:"required"`
-	Annotation       *string `json:"szAnnotation" form:"szAnnotation" query:"szAnnotation"`
-	VehicleTypeId    uint64  `json:"intVehicleTypeId" form:"intVehicleTypeId" query:"intVehicleTypeId" validate:"required"`
+	FacilityName  string  `json:"szFacilityName" form:"szFacilityName" query:"szFacilityName" validate:"required"`
+	Annotation    *string `json:"szAnnotation" form:"szAnnotation" query:"szAnnotation"`
+	VehicleTypeId uint64  `json:"intVehicleTypeId" form:"intVehicleTypeId" query:"intVehicleTypeId" validate:"required"`
 }
 
 type RequestUpdate struct {
-	VehicleBrandId uint64 `json:"intVehicleBrandId" form:"intVehicleBrandId" query:"intVehicleBrandId" validate:"required"`
+	FacilityId uint64 `json:"intFacilityId" form:"intFacilityId" query:"intFacilityId" validate:"required"`
 	RequestCreate
 }
 
@@ -46,7 +46,7 @@ func GetAll(c echo.Context) error {
 		id = &intId
 	}
 
-	vehiclebrands, err := vehiclebrandrepository.GetAll(db.DBCon, id)
+	facilities, err := facilityrepository.GetAll(db.DBCon, id)
 
 	if err != nil {
 		resp := response.ResponseError{
@@ -59,8 +59,8 @@ func GetAll(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "List vehicle brand successfully retrieved",
-		Data:    vehiclebrands,
+		Message: "List facility successfully retrieved",
+		Data:    facilities,
 	}
 	return c.JSON(http.StatusOK, resp)
 }
@@ -86,11 +86,11 @@ func Create(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	vb := new(model.VehicleBrand)
-	vb.VehicleBrandName = r.VehicleBrandName
-	vb.VehicleTypeId = r.VehicleTypeId
-	vb.Annotation = r.Annotation
-	newVehicleBrand, err := vehiclebrandrepository.Create(db.DBCon, vb)
+	fc := new(model.Facility)
+	fc.FacilityName = r.FacilityName
+	fc.VehicleTypeId = r.VehicleTypeId
+	fc.Annotation = r.Annotation
+	newFacility, err := facilityrepository.Create(db.DBCon, fc)
 	if err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusInternalServerError,
@@ -102,8 +102,8 @@ func Create(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusCreated,
-		Message: "Vehicle Brand successfully created",
-		Data:    newVehicleBrand,
+		Message: "Facility successfully created",
+		Data:    newFacility,
 	}
 
 	return c.JSON(resp.Code, resp)
@@ -131,13 +131,13 @@ func Update(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	vBexists, _ := vehiclebrandrepository.GetById(db.DBCon, r.VehicleBrandId)
+	fExists, _ := facilityrepository.GetById(db.DBCon, r.FacilityId)
 
-	if vBexists == nil {
+	if fExists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
 			Message:   http.StatusText(http.StatusNotFound),
-			ErrorCode: 1,
+			ErrorCode: 2,
 		}
 		return c.JSON(resp.Code, resp)
 	}
@@ -153,13 +153,13 @@ func Update(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	v := new(model.VehicleBrand)
-	v.VehicleBrandId = r.VehicleBrandId
-	v.VehicleTypeId = r.VehicleTypeId
-	v.VehicleBrandName = r.VehicleBrandName
-	v.Annotation = r.Annotation
+	fc := new(model.Facility)
+	fc.FacilityId = r.FacilityId
+	fc.VehicleTypeId = r.VehicleTypeId
+	fc.FacilityName = r.FacilityName
+	fc.Annotation = r.Annotation
 
-	err := vehiclebrandrepository.Update(db.DBCon, v)
+	err := facilityrepository.Update(db.DBCon, fc)
 
 	if err != nil {
 		resp := response.ResponseError{
@@ -172,7 +172,7 @@ func Update(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusCreated,
-		Message: "Vehicle Brand successfully updated",
+		Message: "Facility successfully updated",
 		Data:    nil,
 	}
 
@@ -181,9 +181,9 @@ func Update(c echo.Context) error {
 
 func Delete(c echo.Context) error {
 
-	vID := c.Param("id")
+	fID := c.Param("id")
 
-	if vID == "" {
+	if fID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
 			Message:   http.StatusText(http.StatusUnprocessableEntity),
@@ -192,7 +192,7 @@ func Delete(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	intID, err := strconv.ParseUint(vID, 10, 64)
+	intID, err := strconv.ParseUint(fID, 10, 64)
 	if err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusInternalServerError,
@@ -201,7 +201,7 @@ func Delete(c echo.Context) error {
 		}
 		return c.JSON(resp.Code, resp)
 	}
-	err = vehiclebrandrepository.Delete(db.DBCon, intID)
+	err = facilityrepository.Delete(db.DBCon, intID)
 
 	if err != nil {
 		if err.Error() == errorutils.StatusZeroAffectedRows {
@@ -214,7 +214,7 @@ func Delete(c echo.Context) error {
 		} else if err.(*mysql.MySQLError).Number == errorutils.ErrorMySQLDeleteConstraintFK {
 			resp := response.ResponseError{
 				Code:      http.StatusConflict,
-				Message:   "Vehicle Brand is already in used, failed to delete it.",
+				Message:   "Facility is already in used, failed to delete it.",
 				ErrorCode: nil,
 			}
 			return c.JSON(resp.Code, resp)
@@ -230,7 +230,7 @@ func Delete(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusCreated,
-		Message: "Vehicle Brand successfully deleted",
+		Message: "Facility successfully deleted",
 		Data:    nil,
 	}
 
@@ -239,9 +239,9 @@ func Delete(c echo.Context) error {
 
 func GetById(c echo.Context) error {
 
-	vID := c.Param("id")
+	fID := c.Param("id")
 
-	if vID == "" {
+	if fID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
 			Message:   http.StatusText(http.StatusUnprocessableEntity),
@@ -250,7 +250,7 @@ func GetById(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	intID, err := strconv.ParseUint(vID, 10, 64)
+	intID, err := strconv.ParseUint(fID, 10, 64)
 
 	if err != nil {
 		resp := response.ResponseError{
@@ -261,9 +261,9 @@ func GetById(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	vehiclebrand, err := vehiclebrandrepository.GetById(db.DBCon, intID)
+	facility, err := facilityrepository.GetById(db.DBCon, intID)
 
-	if vehiclebrand == nil {
+	if facility == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
 			Message:   http.StatusText(http.StatusNotFound),
@@ -283,8 +283,8 @@ func GetById(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Vehicle Brand successfully retrieved",
-		Data:    vehiclebrand,
+		Message: "Facility successfully retrieved",
+		Data:    facility,
 	}
 	return c.JSON(http.StatusOK, resp)
 }
