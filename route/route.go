@@ -6,6 +6,7 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"github.com/nauhalf/mobilcantik/controller/adstatustype"
 	"github.com/nauhalf/mobilcantik/controller/adtype"
 	"github.com/nauhalf/mobilcantik/controller/auth"
 	"github.com/nauhalf/mobilcantik/controller/bankaccount"
@@ -133,6 +134,10 @@ func InitRoutes(e *echo.Echo) {
 
 		v1.GET("/city/:id", city.GetById, custommiddleware.JWT())
 
+		// --------------------------------------------------------
+		// GROUP Bank Account
+		// --------------------------------------------------------
+
 		bankaccounts := v1.Group("/bankaccounts", custommiddleware.JWT())
 		{
 			bankaccounts.GET("", bankaccount.GetAll)
@@ -143,6 +148,10 @@ func InitRoutes(e *echo.Echo) {
 
 		v1.GET("/bankaccount/:id", bankaccount.GetById, custommiddleware.JWT())
 
+		// --------------------------------------------------------
+		// GROUP Ad Type
+		// --------------------------------------------------------
+
 		adtypes := v1.Group("/adtypes", custommiddleware.JWT())
 		{
 			adtypes.GET("", adtype.GetAll)
@@ -152,6 +161,20 @@ func InitRoutes(e *echo.Echo) {
 		}
 
 		v1.GET("/adtype/:id", adtype.GetById, custommiddleware.JWT())
+
+		// --------------------------------------------------------
+		// GROUP Ad Status Type
+		// --------------------------------------------------------
+
+		adstatustypes := v1.Group("/adstatustypes", custommiddleware.JWT())
+		{
+			adstatustypes.GET("", adstatustype.GetAll)
+			adstatustypes.POST("", adstatustype.Create, custommiddleware.JWTUserCredential)
+			adstatustypes.PATCH("", adstatustype.Update, custommiddleware.JWTUserCredential)
+			adstatustypes.DELETE("/:id", adstatustype.Delete, custommiddleware.JWTUserCredential)
+		}
+
+		v1.GET("/adstatustype/:id", adstatustype.GetById, custommiddleware.JWT())
 
 	}
 }
