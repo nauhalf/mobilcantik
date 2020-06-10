@@ -7,7 +7,9 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/nauhalf/mobilcantik/controller/ad"
+	"github.com/nauhalf/mobilcantik/controller/adbill"
 	"github.com/nauhalf/mobilcantik/controller/adclosingreason"
+	"github.com/nauhalf/mobilcantik/controller/adconfirmation"
 	"github.com/nauhalf/mobilcantik/controller/adstatustype"
 	"github.com/nauhalf/mobilcantik/controller/adtype"
 	"github.com/nauhalf/mobilcantik/controller/auth"
@@ -252,6 +254,20 @@ func InitRoutes(e *echo.Echo) {
 
 		v1.GET("/ad/:id", ad.GetById, custommiddleware.JWT())
 		v1.POST("/ad-verification", ad.Verification)
+
+		// --------------------------------------------------------
+		// GROUP Bill
+		// --------------------------------------------------------
+
+		bills := v1.Group("/bills", custommiddleware.JWT())
+		{
+			bills.GET("", adbill.GetAll)
+			bills.POST("/confirmation-payment", adconfirmation.Create)
+			bills.POST("/verify-payment", adbill.ConfirmPaymentBill, custommiddleware.JWTUserCredential)
+
+		}
+
+		v1.GET("/bill/:id", adbill.GetById, custommiddleware.JWT(), custommiddleware.JWTUserCredential)
 
 	}
 }

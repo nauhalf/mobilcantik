@@ -889,7 +889,8 @@ func Verification(db *sql.DB, adId uint64) error {
 			intAdStatusTypeId = 3,
 			dtmPosted=?, 
 			dtmConfirmation=?, 
-			dtmExpired=?
+			dtmExpired=?,
+			dtmModifiedDate=NOW()
 		WHERE intAdId=?`
 
 	tx, err := db.Begin()
@@ -931,6 +932,7 @@ func Verification(db *sql.DB, adId uint64) error {
 func Increment(db *sql.DB, intAdId uint64) error {
 	qry := `UPDATE APP_Ad 
 		SET 
+			dtmModifiedDate=NOW(),
 			intHits = intHits + 1
 		WHERE intAdId=?`
 
