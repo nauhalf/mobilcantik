@@ -61,11 +61,11 @@ func GetAllFacilities(db *sql.DB) ([]model.Facility, error) {
 	var facilities []model.Facility
 	rows, err := db.Query("SELECT * FROM GEN_Facility")
 
-	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
+	defer rows.Close()
 
 	for rows.Next() {
 		facility := new(model.Facility)
@@ -100,11 +100,11 @@ func GetAllFacilitiesByVehicleType(db *sql.DB, vehicletype_id uint64) ([]model.F
 	var facilities []model.Facility
 	rows, err := db.Query("SELECT * FROM GEN_Facility WHERE intVehicleTypeId = ?", vehicletype_id)
 
-	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
+	defer rows.Close()
 
 	for rows.Next() {
 		facility := new(model.Facility)

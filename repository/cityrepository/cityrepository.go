@@ -77,11 +77,11 @@ func GetAllCitiesByProvince(db *sql.DB, province_id string) ([]model.City, error
 	var cities []model.City
 	rows, err := db.Query("SELECT szCityId, szProvinceId, szCityName, szAnnotation FROM GEN_City WHERE szProvinceId = ?", province_id)
 
-	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
+	defer rows.Close()
 
 	for rows.Next() {
 		city := new(model.City)

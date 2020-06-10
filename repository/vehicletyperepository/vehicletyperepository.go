@@ -14,11 +14,12 @@ func GetAll(db *sql.DB) ([]model.VehicleType, error) {
 	var types []model.VehicleType
 	rows, err := db.Query("SELECT * FROM GEN_VehicleType")
 
-	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
+
+	defer rows.Close()
 
 	for rows.Next() {
 		vtype := new(model.VehicleType)

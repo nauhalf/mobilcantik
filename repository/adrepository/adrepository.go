@@ -205,8 +205,12 @@ func GetAll(db *sql.DB, page int, arr_province []string, arr_city []string, arr_
 	joinQrySelect := qrySelectData + qryFrom + whereProvince + whereCity + whereBrand + whereVehicleType + orderBy + qryLimit
 
 	binds = append(binds, limitbinds...)
-	rows, _ := db.Query(joinQrySelect, binds...)
+	rows, err := db.Query(joinQrySelect, binds...)
 
+	if err != nil {
+		fmt.Println(err.Error())
+		return nil, err
+	}
 	defer rows.Close()
 
 	for rows.Next() {
@@ -847,11 +851,11 @@ func GetFacilitiesByAdId(db *sql.DB, adId uint64) ([]FacilityResponse, error) {
 			WHERE af.intAdId = ?`
 	rows, err := db.Query(qryFacility, adId)
 
-	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
+	defer rows.Close()
 
 	for rows.Next() {
 		f := new(FacilityResponse)
@@ -991,6 +995,11 @@ func GetImagesByAdId(db *sql.DB, adId uint64) ([]string, error) {
 				APP_AdImage
 				WHERE intAdId = ?`
 	rows, err := db.Query(qry, adId)
+
+	if err != nil {
+		fmt.Println(err.Error())
+		return nil, err
+	}
 
 	defer rows.Close()
 

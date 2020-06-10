@@ -14,11 +14,11 @@ func GetAll(db *sql.DB) ([]model.Condition, error) {
 	var conditions []model.Condition
 	rows, err := db.Query("SELECT * FROM GEN_Condition")
 
-	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
+	defer rows.Close()
 
 	for rows.Next() {
 		condition := new(model.Condition)

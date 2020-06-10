@@ -102,11 +102,11 @@ func GetAllBrandsByVehicleType(db *sql.DB, vehicletype_id uint64) ([]model.Vehic
 	var brands []model.VehicleBrand
 	rows, err := db.Query("SELECT * FROM GEN_VehicleBrand WHERE intVehicleTypeId = ?", vehicletype_id)
 
-	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
+	defer rows.Close()
 
 	for rows.Next() {
 		vBrand := new(model.VehicleBrand)

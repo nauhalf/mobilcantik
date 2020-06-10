@@ -14,11 +14,11 @@ func GetAll(db *sql.DB) ([]model.ReportGroup, error) {
 	var reportgroups []model.ReportGroup
 	rows, err := db.Query("SELECT * FROM GEN_ReportGroup")
 
-	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
+	defer rows.Close()
 
 	for rows.Next() {
 		reportgroup := new(model.ReportGroup)

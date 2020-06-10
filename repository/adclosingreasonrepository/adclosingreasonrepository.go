@@ -14,11 +14,11 @@ func GetAll(db *sql.DB) ([]model.AdClosingReason, error) {
 	var adclosingreasons []model.AdClosingReason
 	rows, err := db.Query("SELECT * FROM GEN_AdClosingReason")
 
-	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
+	defer rows.Close()
 
 	for rows.Next() {
 		adclosingreason := new(model.AdClosingReason)
