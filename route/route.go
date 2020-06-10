@@ -10,6 +10,7 @@ import (
 	"github.com/nauhalf/mobilcantik/controller/adbill"
 	"github.com/nauhalf/mobilcantik/controller/adclosingreason"
 	"github.com/nauhalf/mobilcantik/controller/adconfirmation"
+	"github.com/nauhalf/mobilcantik/controller/adreport"
 	"github.com/nauhalf/mobilcantik/controller/adstatustype"
 	"github.com/nauhalf/mobilcantik/controller/adtype"
 	"github.com/nauhalf/mobilcantik/controller/auth"
@@ -268,6 +269,20 @@ func InitRoutes(e *echo.Echo) {
 		}
 
 		v1.GET("/bill/:id", adbill.GetById, custommiddleware.JWT(), custommiddleware.JWTUserCredential)
+
+		// --------------------------------------------------------
+		// GROUP Ad Report
+		// --------------------------------------------------------
+
+		adreports := v1.Group("/adreports", custommiddleware.JWT())
+		{
+			adreports.GET("", adreport.GetAll, custommiddleware.JWTUserCredential)
+			adreports.POST("", adreport.Create)
+			adreports.DELETE("/:id", adreport.Delete, custommiddleware.JWTUserCredential)
+
+		}
+
+		v1.GET("/adreport/:id", adreport.GetById, custommiddleware.JWT(), custommiddleware.JWTUserCredential)
 
 	}
 }
