@@ -1,0 +1,2442 @@
+{
+	"info": {
+		"_postman_id": "100a48c9-d1b9-426a-922a-96ae4a7d41cb",
+		"name": "MobilCantik",
+		"description": "Testing MobilCantik API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "[AUTH] Request Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szApiKey",
+							"value": "6a4354349fb911eaadcb08002722efb6",
+							"type": "text"
+						},
+						{
+							"key": "szUsername",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "szPassword",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/request-token",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"request-token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[VehicleType] List All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/vehicletypes",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"vehicletypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[VehicleType] Create Vehicle Type",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szVehicleTypeName",
+							"value": "Sepeda",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/vehicletypes",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"vehicletypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[VehicleType] Update Vehicle Type",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "intVehicleTypeId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "szVehicleTypeName",
+							"value": "Car",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/vehicletypes",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"vehicletypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[VehicleType] Delete Vehicle Type",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/vehicletypes/3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"vehicletypes",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[VehicleType] Single Vehicle Type",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/vehicletype/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"vehicletype",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[VehicleBrand] List All Vehicle Brand",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2MjkxNTYsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.7Jd5B3GWjPWjG2mrOl1LfURiI3qpeaorQIvMm5pckW4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/vehiclebrands?vehicletype_id=43",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"vehiclebrands"
+					],
+					"query": [
+						{
+							"key": "vehicletype_id",
+							"value": "43"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[VehicleBrand] Create Vehicle Brand",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szBrandName",
+							"value": "Wuling",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "intVehicleTypeId",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/vehiclebrands",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"vehiclebrands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[VehicleBrand] Update Vehicle Brand",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "intVehicleBrandId",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "szBrandName",
+							"value": "Yamaha",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "Motor Yamaha",
+							"type": "text"
+						},
+						{
+							"key": "intVehicleTypeId",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/vehiclebrands",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"vehiclebrands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[VehicleBrand] Delete Vehicle Brand",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/vehiclebrands/9",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"vehiclebrands",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[VehicleBrand] Single Vehicle Brand",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/vehiclebrand/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"vehiclebrand",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Fuel] List All Fuel",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTA3MzksImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.5o7iFI4OT27yRAUsfYVm_Xz8_8dZiSXV6X_ZixByVKU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/fuels",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"fuels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Fuel] Create Fuel",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2MjY3MDMsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.PDrKXlMMCaezhb8b0LbWNEARQOwEzdYcEg1JQe7vr8Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szFuelName",
+							"value": "Dex Lite",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/fuels",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"fuels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Fuel] Update Fuel",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2MzE5MTcsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.DY7_DtyhqyMcjbnDEtYYPdxO-4nZ8viyx65qt6t6Dus",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "intFuelId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "szFuelName",
+							"value": "Premium",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "Si Kuning",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/fuels",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"fuels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Fuel] Delete Fuel",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2MjcwMzIsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.Q7sSP4yHqdMBZaYsWbjyzS3jokx0qG4LJ_E4BLeEoWA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/fuels/6",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"fuels",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Fuel] Single Fuel",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTA3MzksImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.5o7iFI4OT27yRAUsfYVm_Xz8_8dZiSXV6X_ZixByVKU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/fuel/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"fuel",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Fuel] List Fuel Mapping",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTA3MzksImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.5o7iFI4OT27yRAUsfYVm_Xz8_8dZiSXV6X_ZixByVKU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/fuel_mapping?vehicletype_id=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"fuel_mapping"
+					],
+					"query": [
+						{
+							"key": "vehicletype_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Fuel] Map Fuels by Vehicle Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2MzM0MDIsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.jOHlLspgMBk17gsDhvXjkdiYJNDJ2m4g81njsvllyUo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "intVehicleTypeId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "intFuelIds",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "intFuelIds",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "intFuelIds",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "intFuelIds",
+							"value": "4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/fuel_mapping",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"fuel_mapping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Condition] List All Condition",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2MzY5MjAsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.AnaS1l3s5Zf8nPXIh55lOugO7y3ZSdNY6dJbqhSEgmY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/conditions",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"conditions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Condition] Create Condition",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2MzY5MjAsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.AnaS1l3s5Zf8nPXIh55lOugO7y3ZSdNY6dJbqhSEgmY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szConditionName",
+							"value": "Used2",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/conditions",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"conditions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Condition] Update Condition",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2MzY5MjAsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.AnaS1l3s5Zf8nPXIh55lOugO7y3ZSdNY6dJbqhSEgmY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szConditionName",
+							"value": "Bekas",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "intConditionId",
+							"value": "4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/conditions",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"conditions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Condition] Delete Condition",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2MzY5MjAsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.AnaS1l3s5Zf8nPXIh55lOugO7y3ZSdNY6dJbqhSEgmY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/conditions/4",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"conditions",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Condition] Single Condition",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2MzY5MjAsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.AnaS1l3s5Zf8nPXIh55lOugO7y3ZSdNY6dJbqhSEgmY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/condition/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"condition",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Facility] List All Facility",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDc4OTgsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.USrbXq23HU7o7j6m8XJg4-8JLrNEGdhhZ0Cyh5WfgpM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/facilities?vehicletype_id=",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"facilities"
+					],
+					"query": [
+						{
+							"key": "vehicletype_id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Facility] Create Facility",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2MzkyNDcsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.KaHk_KLL3Y9AvF2G4_Qm65S_6uSdLMN4ovwVr47_0OA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szFacilityName",
+							"value": "Shockbreaker Upside Down",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "intVehicleTypeId",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/facilities",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"facilities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Facility] Update Facility",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2MzkyNDcsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.KaHk_KLL3Y9AvF2G4_Qm65S_6uSdLMN4ovwVr47_0OA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szFacilityName",
+							"value": "Camera",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "intVehicleTypeId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "intFacilityId",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/facilities",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"facilities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Facility] Delete Facility",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2MzkyNDcsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.KaHk_KLL3Y9AvF2G4_Qm65S_6uSdLMN4ovwVr47_0OA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/facilities/5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"facilities",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Facility] Single Facility",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2MzkyNDcsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.KaHk_KLL3Y9AvF2G4_Qm65S_6uSdLMN4ovwVr47_0OA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/facility/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"facility",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Province] List All Province",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDA4MDUsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.TcB_t9oBsyOLUmAKYnZAhMmVhlJYY30pzzdH1G81-9g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/provinces",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"provinces"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Province] Single Province",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDA4MDUsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.TcB_t9oBsyOLUmAKYnZAhMmVhlJYY30pzzdH1G81-9g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/province/32",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"province",
+						"32"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[City] List All City",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDI2MDksImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.ZRvGcU7xppe1gprOqbFpvW7CgKbmp34mf9gMnScL_J4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/cities?province_id=32",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"cities"
+					],
+					"query": [
+						{
+							"key": "province_id",
+							"value": "32"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[City] Single City",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDI4MTAsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.-EVtpF8ALgSj9VsD9NyvBaADZDwb_Y2SI9A314nXbLU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/city/3275",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"city",
+						"3275"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Bank Account] List All Bank Account",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDY5NDYsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.ZwaEVJ8JLETK33LVP4OpxaFc9GylDni7-fZmzhPz-dE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/bankaccounts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"bankaccounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Bank Account] Create Bank Account",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDU5NDUsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.LkbkHT3ernAtHmuHFGkX8_1t31gq1vZMdXlVk6s2k58",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szBankAccountNumber",
+							"value": "534231123",
+							"type": "text"
+						},
+						{
+							"key": "szBankCode",
+							"value": "008",
+							"type": "text"
+						},
+						{
+							"key": "szBankAccountName",
+							"value": "Mandiri a/n Muhammad Naufal Fadhillah",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/bankaccounts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"bankaccounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Bank Account] Update Bank Account",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDY5NDYsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.ZwaEVJ8JLETK33LVP4OpxaFc9GylDni7-fZmzhPz-dE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szBankAccountNumber",
+							"value": "534231311123",
+							"type": "text"
+						},
+						{
+							"key": "szBankCode",
+							"value": "008",
+							"type": "text"
+						},
+						{
+							"key": "szBankAccountName",
+							"value": "Mandiri a/n M Naufal Fadhillah",
+							"type": "text"
+						},
+						{
+							"key": "intBankAccountId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "isActive",
+							"value": "false",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/bankaccounts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"bankaccounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Bank Account] Delete Bank Account",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDcwNjQsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.fLpOXlAS1_SRrIgckHuVMLd0Rznq3tCV8dVYTRkkrw4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/bankaccounts/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"bankaccounts",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Bank Account] Single Bank Account",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDcwNjQsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.fLpOXlAS1_SRrIgckHuVMLd0Rznq3tCV8dVYTRkkrw4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/bankaccount/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"bankaccount",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Ad Type] List All Ad Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDc4OTgsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.USrbXq23HU7o7j6m8XJg4-8JLrNEGdhhZ0Cyh5WfgpM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/adtypes",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"adtypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Ad Type] Create Ad Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDc4OTgsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.USrbXq23HU7o7j6m8XJg4-8JLrNEGdhhZ0Cyh5WfgpM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szAdTypeName",
+							"value": "Over Credit",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/adtypes",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"adtypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Ad Type] Update Ad Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDc4OTgsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.USrbXq23HU7o7j6m8XJg4-8JLrNEGdhhZ0Cyh5WfgpM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szAdTypeName",
+							"value": "Pindah Kredit",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "intAdTypeId",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/adtypes",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"adtypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Ad Type] Delete Ad Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDc4OTgsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.USrbXq23HU7o7j6m8XJg4-8JLrNEGdhhZ0Cyh5WfgpM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/adtypes/3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"adtypes",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Ad Type] Single Ad Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDc4OTgsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.USrbXq23HU7o7j6m8XJg4-8JLrNEGdhhZ0Cyh5WfgpM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/adtype/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"adtype",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Ad Status Type] List All Ad Status Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDk0MjYsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.G17NZrTdKSxRA2gSriIPhqZiA4zWWb3O7HGg-3-U908",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/adstatustypes",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"adstatustypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Ad Status Type] Create Ad Status Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDk0MjYsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.G17NZrTdKSxRA2gSriIPhqZiA4zWWb3O7HGg-3-U908",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szAdStatusTypeName",
+							"value": "TUNGGU",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/adstatustypes",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"adstatustypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Ad Status Type] Update Ad Status Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDk0MjYsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.G17NZrTdKSxRA2gSriIPhqZiA4zWWb3O7HGg-3-U908",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szAdStatusTypeName",
+							"value": "TUNGGUf",
+							"type": "text"
+						},
+						{
+							"key": "intAdStatusTypeId",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/adstatustypes",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"adstatustypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Ad Status Type] Delete Ad Status Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDk0MjYsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.G17NZrTdKSxRA2gSriIPhqZiA4zWWb3O7HGg-3-U908",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/adstatustypes/5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"adstatustypes",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Ad Status Type] Single Ad Status Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NDk0MjYsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.G17NZrTdKSxRA2gSriIPhqZiA4zWWb3O7HGg-3-U908",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/adstatustype/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"adstatustype",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Ad Closing Reason] List All Ad Closing Reason",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTA3MzksImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.5o7iFI4OT27yRAUsfYVm_Xz8_8dZiSXV6X_ZixByVKU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/adclosingreasons",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"adclosingreasons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Ad Closing Reason] Create Ad Closing Reason",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTA3MzksImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.5o7iFI4OT27yRAUsfYVm_Xz8_8dZiSXV6X_ZixByVKU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szReasonName",
+							"value": "Tidak Laku",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/adclosingreasons",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"adclosingreasons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Ad Closing Reason] Update Ad Closing Reason",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTA3MzksImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.5o7iFI4OT27yRAUsfYVm_Xz8_8dZiSXV6X_ZixByVKU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szReasonName",
+							"value": "Tidak Lakus",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "intAdClosingReasonId",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/adclosingreasons",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"adclosingreasons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Ad Closing Reason] Delete Ad Closing Reason",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTA3MzksImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.5o7iFI4OT27yRAUsfYVm_Xz8_8dZiSXV6X_ZixByVKU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szReasonName",
+							"value": "Tidak Lakus",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "intAdClosingReasonId",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/adclosingreasons/5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"adclosingreasons",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Ad Closing Reason] Single Ad Closing Reason",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTA3MzksImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.5o7iFI4OT27yRAUsfYVm_Xz8_8dZiSXV6X_ZixByVKU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szReasonName",
+							"value": "Tidak Lakus",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "intAdClosingReasonId",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/adclosingreason/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"adclosingreason",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Partner] List All Partner",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTIwMjUsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.hmyvnFgjMzxMgXSLIZc3vUkXOs7UeaRIWlwqHAFWe1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/partners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"partners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Partner] Create Partner",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTIwMjUsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.hmyvnFgjMzxMgXSLIZc3vUkXOs7UeaRIWlwqHAFWe1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szTitle",
+							"value": "Lynda ERP | ERP Asli Indonesia",
+							"type": "text"
+						},
+						{
+							"key": "szUrl",
+							"value": "lyndaerp.id",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/partners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"partners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Partner] Update Partner",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTIwMjUsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.hmyvnFgjMzxMgXSLIZc3vUkXOs7UeaRIWlwqHAFWe1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szTitle",
+							"value": "LyndaERP",
+							"type": "text"
+						},
+						{
+							"key": "szUrl",
+							"value": "lyndaerp.id",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "intPartnerId",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/partners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"partners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Partner] Delete Partner",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTIwMjUsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.hmyvnFgjMzxMgXSLIZc3vUkXOs7UeaRIWlwqHAFWe1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/partners/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"partners",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Partner] Single Partner",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTIwMjUsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.hmyvnFgjMzxMgXSLIZc3vUkXOs7UeaRIWlwqHAFWe1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/partner/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"partner",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Report Group] List All Report Group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTMzNzYsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.v19aaAUgDyrJ2E-Q6rStBJJa2T8sRIMcI7l_MQpxf7E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/reportgroups",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"reportgroups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Report Group] Create Report Group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTMzNzYsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.v19aaAUgDyrJ2E-Q6rStBJJa2T8sRIMcI7l_MQpxf7E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szReportGroupName",
+							"value": "Pelanggaran SARA",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/reportgroups",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"reportgroups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Report Group] Update Report Group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTMzNzYsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.v19aaAUgDyrJ2E-Q6rStBJJa2T8sRIMcI7l_MQpxf7E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szReportGroupName",
+							"value": "Pelanggaran Sara",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "intReportGroupId",
+							"value": "4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/reportgroups",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"reportgroups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Report Group] Delete Report Group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTMzNzYsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.v19aaAUgDyrJ2E-Q6rStBJJa2T8sRIMcI7l_MQpxf7E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/reportgroups/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"reportgroups",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Report Group] Single Report Group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTMzNzYsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.v19aaAUgDyrJ2E-Q6rStBJJa2T8sRIMcI7l_MQpxf7E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/reportgroup/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"reportgroup",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Report Type] List All Report Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTUyNjQsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.D-O5fvb72b_J-jpt35QeEHHl2F4nPplnQ9zvh_7Kb0U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/reporttypes?reportgroup_id=4",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"reporttypes"
+					],
+					"query": [
+						{
+							"key": "reportgroup_id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Report Type] Create Report Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTUyNjQsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.D-O5fvb72b_J-jpt35QeEHHl2F4nPplnQ9zvh_7Kb0U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szReportTypeName",
+							"value": "Iklan tidak meyakinkan",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "intReportGroupId",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/reporttypes",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"reporttypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Report Type] Update Report Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTUyNjQsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.D-O5fvb72b_J-jpt35QeEHHl2F4nPplnQ9zvh_7Kb0U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "szReportTypeName",
+							"value": "Iklan tidak meyakinkan.",
+							"type": "text"
+						},
+						{
+							"key": "szAnnotation",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "intReportGroupId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "intReportTypeId",
+							"value": "7",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/v1/reporttypes",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"reporttypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Report Type] Delete Report Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTUyNjQsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.D-O5fvb72b_J-jpt35QeEHHl2F4nPplnQ9zvh_7Kb0U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/reporttypes/7",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"reporttypes",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Report Type] Single Report Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2NTUyNjQsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.D-O5fvb72b_J-jpt35QeEHHl2F4nPplnQ9zvh_7Kb0U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/reporttype/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"reporttype",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE2MjYwNTQsImtleV9pZCI6IjZhNDM1NDM0OWZiOTExZWFhZGNiMDgwMDI3MjJlZmI2IiwidXNlcm5hbWUiOiJhZG1pbiJ9.yJjX83IrKpzjlsvu05YXzVlD_lPeC7ceIX5GWRwjhF8",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "03db6d7b-b1b9-4a55-9777-1d5641faf631",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "3b5c3ad3-544d-404b-9cb4-ed9ffdf62a32",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "0e6b670a-de5d-4fea-ae7f-eb7712c5182b",
+			"key": "url",
+			"value": "127.0.0.1:1234",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

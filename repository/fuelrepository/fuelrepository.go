@@ -33,12 +33,11 @@ func GetAll(db *sql.DB) ([]model.Fuel, error) {
 	var types []model.Fuel
 	rows, err := db.Query("SELECT * FROM GEN_Fuel")
 
+	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
-
-	defer rows.Close()
 
 	for rows.Next() {
 		vtype := new(model.Fuel)
@@ -271,12 +270,11 @@ func GetVehicleFuelMapping(db *sql.DB) ([]VehicleTypeFuelMapping, error) {
 	var vf []VehicleTypeFuelMapping
 	rows, err := db.Query("SELECT f.intFuelId, f.szFuelName, f.szAnnotation, vf.intVehicleTypeId FROM GEN_Fuel f LEFT JOIN GEN_VehicleFuel vf ON vf.intFuelId = f.intFuelId")
 
+	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
-
-	defer rows.Close()
 
 	for rows.Next() {
 		fr := new(FuelResponse)
@@ -310,12 +308,11 @@ func GetVehicleFuelMappingById(db *sql.DB, vehicletype_id uint64) ([]VehicleType
 	var vf []VehicleTypeFuelMapping
 	rows, err := db.Query("SELECT f.intFuelId, f.szFuelName, f.szAnnotation, vf.intVehicleTypeId FROM GEN_Fuel f LEFT JOIN GEN_VehicleFuel vf ON vf.intFuelId = f.intFuelId WHERE vf.intVehicleTypeId = ?", vehicletype_id)
 
+	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
-
-	defer rows.Close()
 
 	for rows.Next() {
 		fr := new(FuelResponse)

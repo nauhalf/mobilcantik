@@ -6,6 +6,7 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"github.com/nauhalf/mobilcantik/controller/ad"
 	"github.com/nauhalf/mobilcantik/controller/adclosingreason"
 	"github.com/nauhalf/mobilcantik/controller/adstatustype"
 	"github.com/nauhalf/mobilcantik/controller/adtype"
@@ -235,6 +236,22 @@ func InitRoutes(e *echo.Echo) {
 		}
 
 		v1.GET("/reporttype/:id", reporttype.GetById, custommiddleware.JWT())
+
+		// --------------------------------------------------------
+		// GROUP Ad
+		// --------------------------------------------------------
+
+		ads := v1.Group("/ads", custommiddleware.JWT())
+		{
+			ads.GET("", ad.GetAll)
+			ads.POST("", ad.Create)
+			// ads.PATCH("", reporttype.Update, custommiddleware.JWTUserCredential)
+			ads.DELETE("/:id/:password", ad.Delete)
+			ads.DELETE("/forcedelete/:id", ad.ForceDelete, custommiddleware.JWTUserCredential)
+		}
+
+		v1.GET("/ad/:id", ad.GetById, custommiddleware.JWT())
+		v1.POST("/ad-verification", ad.Verification)
 
 	}
 }

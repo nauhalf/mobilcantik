@@ -11,3 +11,10 @@ type ResponseSuccess struct {
 	Message string      `json:"message"`
 	Data    interface{} `json:"data"`
 }
+
+type Metadata struct {
+	Page        int `json:"page"`
+	TotalPage   int `json:"total_pages"`
+	ItemPerPage int `json:"item_per_page"`
+	TotalItems  int `json:"total_items"`
+}

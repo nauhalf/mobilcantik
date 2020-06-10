@@ -30,12 +30,11 @@ func GetAllBankAccount(db *sql.DB) ([]model.BankAccount, error) {
 	var banks []model.BankAccount
 	rows, err := db.Query("SELECT * FROM GEN_BankAccount")
 
+	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
-
-	defer rows.Close()
 
 	for rows.Next() {
 		bankAccount := new(model.BankAccount)
@@ -71,12 +70,11 @@ func GetAllBankAccountByStatusActive(db *sql.DB, is_active bool) ([]model.BankAc
 	var banks []model.BankAccount
 	rows, err := db.Query("SELECT * FROM GEN_BankAccount WHERE isActive = ?", is_active)
 
+	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
-
-	defer rows.Close()
 
 	for rows.Next() {
 		bankAccount := new(model.BankAccount)

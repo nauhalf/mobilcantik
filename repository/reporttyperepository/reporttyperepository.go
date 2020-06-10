@@ -61,12 +61,11 @@ func GetAllReportTypes(db *sql.DB) ([]model.ReportType, error) {
 	var reporttypes []model.ReportType
 	rows, err := db.Query("SELECT * FROM GEN_ReportType")
 
+	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
-
-	defer rows.Close()
 
 	for rows.Next() {
 		reporttype := new(model.ReportType)
@@ -101,12 +100,11 @@ func GetAllReportTypesByReportGroup(db *sql.DB, reportgroup_id uint64) ([]model.
 	var reporttypes []model.ReportType
 	rows, err := db.Query("SELECT * FROM GEN_ReportType WHERE intReportGroupId = ?", reportgroup_id)
 
+	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
-
-	defer rows.Close()
 
 	for rows.Next() {
 		reporttype := new(model.ReportType)

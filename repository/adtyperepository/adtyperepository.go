@@ -14,12 +14,11 @@ func GetAll(db *sql.DB) ([]model.AdType, error) {
 	var adtypes []model.AdType
 	rows, err := db.Query("SELECT * FROM GEN_AdType")
 
+	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
-
-	defer rows.Close()
 
 	for rows.Next() {
 		adtype := new(model.AdType)

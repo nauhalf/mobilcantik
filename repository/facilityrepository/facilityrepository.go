@@ -61,12 +61,11 @@ func GetAllFacilities(db *sql.DB) ([]model.Facility, error) {
 	var facilities []model.Facility
 	rows, err := db.Query("SELECT * FROM GEN_Facility")
 
+	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
-
-	defer rows.Close()
 
 	for rows.Next() {
 		facility := new(model.Facility)
@@ -101,12 +100,11 @@ func GetAllFacilitiesByVehicleType(db *sql.DB, vehicletype_id uint64) ([]model.F
 	var facilities []model.Facility
 	rows, err := db.Query("SELECT * FROM GEN_Facility WHERE intVehicleTypeId = ?", vehicletype_id)
 
+	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
-
-	defer rows.Close()
 
 	for rows.Next() {
 		facility := new(model.Facility)
@@ -331,4 +329,42 @@ func GetById(db *sql.DB, id uint64) (*FacilityCreateResponse, error) {
 	respobj.VehicleType = *vtypes
 
 	return &respobj, nil
+}
+
+func IsExists(db *sql.DB, vehicletype_id uint64, ids []uint64) (bool, error) {
+
+	qry := `SELECT 
+  COUNT(f.intFacilityId)
+FROM
+  GEN_Facility f
+  WHERE f.intVehicleTypeId = ?
+  AND f.intFacilityId IN (`
+	binds := []interface{}{}
+	binds = append(binds, vehicletype_id)
+	for i, id := range ids {
+		qry += "?"
+		binds = append(binds, id)
+
+		if i < len(ids)-1 {
+			qry += ", "
+		} else {
+			qry += ")"
+		}
+	}
+
+	var count int
+
+	err := db.QueryRow(qry, binds...).
+		Scan(&count)
+
+	if err != nil {
+		fmt.Println(err.Error())
+		return false, err
+	}
+
+	if count == len(ids) {
+		return true, nil
+	} else {
+		return false, nil
+	}
 }

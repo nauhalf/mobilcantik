@@ -12,12 +12,11 @@ func GetAll(db *sql.DB) ([]model.Province, error) {
 	var provinces []model.Province
 	rows, err := db.Query("SELECT szProvinceId, szProvinceName, szAnnotation FROM GEN_Province")
 
+	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err
 	}
-
-	defer rows.Close()
 
 	for rows.Next() {
 		province := new(model.Province)
