@@ -117,16 +117,7 @@ func Create(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	reportTypeExists, err := reporttyperepository.GetById(db.DBCon, r.ReportTypeId)
-
-	if err != nil {
-		resp := response.ResponseError{
-			Code:      http.StatusInternalServerError,
-			Message:   http.StatusText(http.StatusInternalServerError),
-			ErrorCode: nil,
-		}
-		return c.JSON(resp.Code, resp)
-	}
+	reportTypeExists, _ := reporttyperepository.GetById(db.DBCon, r.ReportTypeId)
 
 	if reportTypeExists == nil {
 		resp := response.ResponseError{

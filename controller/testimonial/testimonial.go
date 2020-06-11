@@ -1,4 +1,4 @@
-package adbill
+package testimonial
 
 import (
 	"net/http"
@@ -6,36 +6,22 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/nauhalf/mobilcantik/db"
-	"github.com/nauhalf/mobilcantik/repository/adbillrepository"
-	"github.com/nauhalf/mobilcantik/repository/adconfirmationrepository"
 	"github.com/nauhalf/mobilcantik/repository/adrepository"
 	"github.com/nauhalf/mobilcantik/repository/model"
+	"github.com/nauhalf/mobilcantik/repository/testimonialrepository"
 	"github.com/nauhalf/mobilcantik/response"
 )
 
 type RequestCreate struct {
-	ReasonName string `json:"szReasonName" form:"szReasonName" query:"szReasonName" validate:"required"`
-	Annotation string `json:"szAnnotation" form:"szAnnotation" query:"szAnnotation"`
-}
-
-type AdBillResponse struct {
-	model.AdBill
-	confirmations []adconfirmationrepository.AdConfirmationResponse `json:"confirmations"`
+	AdId              uint64 `json:"intAdId" form:"intAdId" validate:"required"`
+	Comment           string `json:"szComment" form:"szComment" validate:"required"`
+	Password          string `json:"szPassword" form:"szPassword" validate:"required"`
+	AdClosingReasonId uint64 `json:"intAdClosingReasonId" form:"intAdClosingReasonId"`
 }
 
 func GetAll(c echo.Context) error {
 
-	page := c.QueryParam("page")
-
-	var p int
-	tmpP, err := strconv.Atoi(page)
-	if tmpP < 1 || err != nil {
-		p = 1
-	} else {
-		p = tmpP
-	}
-
-	all, err := adbillrepository.GetAll(db.DBCon, p)
+	testimonials, err := testimonialrepository.GetAll(db.DBCon)
 
 	if err != nil {
 		resp := response.ResponseError{
@@ -48,29 +34,17 @@ func GetAll(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "List Ad Bill successfully retrieved",
-		Data:    all,
+		Message: "List Testimonial successfully retrieved",
+		Data:    testimonials,
 	}
 	return c.JSON(http.StatusOK, resp)
 }
 
-func ConfirmPaymentBill(c echo.Context) error {
+func Create(c echo.Context) error {
 
-	id := c.FormValue("intAdId")
-	password := c.FormValue("password")
+	r := new(RequestCreate)
 
-	if id == "" || password == "" {
-
-		resp := response.ResponseError{
-			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
-			ErrorCode: 1,
-		}
-		return c.JSON(resp.Code, resp)
-	}
-
-	intAdId, err := strconv.ParseUint(id, 10, 64)
-	if err != nil {
+	if err := c.Bind(r); err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusInternalServerError,
 			Message:   http.StatusText(http.StatusInternalServerError),
@@ -79,7 +53,16 @@ func ConfirmPaymentBill(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	ad, pw, _ := adrepository.GetAdById2(db.DBCon, intAdId)
+	if err := c.Validate(r); err != nil {
+		resp := response.ResponseError{
+			Code:      http.StatusUnprocessableEntity,
+			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			ErrorCode: 1,
+		}
+		return c.JSON(resp.Code, resp)
+	}
+
+	ad, pw, _ := adrepository.GetAdById2(db.DBCon, r.AdId)
 
 	if ad == nil {
 		resp := response.ResponseError{
@@ -90,16 +73,7 @@ func ConfirmPaymentBill(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	if password != *pw {
-		resp := response.ResponseError{
-			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
-			ErrorCode: 1,
-		}
-		return c.JSON(resp.Code, resp)
-	}
-
-	if ad.AdStatusTypeId != 1 {
+	if r.Password != *pw {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
 			Message:   http.StatusText(http.StatusUnprocessableEntity),
@@ -108,20 +82,24 @@ func ConfirmPaymentBill(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	adbill, _ := adbillrepository.GetByAdId(db.DBCon, intAdId)
-	if ad == nil {
+	testimonialExists, _ := testimonialrepository.GetByAdId(db.DBCon, r.AdId)
+
+	if testimonialExists != nil {
 		resp := response.ResponseError{
-			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
-			ErrorCode: 2,
+			Code:      http.StatusUnprocessableEntity,
+			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			ErrorCode: 3,
 		}
 		return c.JSON(resp.Code, resp)
 	}
 
-	adbill.Balance = 0
+	testimonial := new(model.Testimonial)
+	testimonial.AdId = r.AdId
+	testimonial.Comment = r.Comment
+	testimonial.AdClosingReasonId = r.AdClosingReasonId
+	testimonial.IsActive = ad.IsActive
 
-	err = adbillrepository.ConfirmPaymentBill(db.DBCon, adbill)
-
+	newTesti, err := testimonialrepository.Create(db.DBCon, testimonial)
 	if err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusInternalServerError,
@@ -132,9 +110,9 @@ func ConfirmPaymentBill(c echo.Context) error {
 	}
 
 	resp := response.ResponseSuccess{
-		Code:    http.StatusOK,
-		Message: "Ad Bill Payment successfully confirmed",
-		Data:    nil,
+		Code:    http.StatusCreated,
+		Message: "Testimonial successfully created",
+		Data:    newTesti,
 	}
 
 	return c.JSON(resp.Code, resp)
@@ -164,9 +142,9 @@ func GetById(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	adbill, _ := adbillrepository.GetById(db.DBCon, intID)
+	testi, err := testimonialrepository.GetById(db.DBCon, intID)
 
-	if adbill == nil {
+	if testi == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
 			Message:   http.StatusText(http.StatusNotFound),
@@ -175,14 +153,19 @@ func GetById(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	adconfirmation, _ := adconfirmationrepository.GetByAdId(db.DBCon, adbill.AdBill.AdId)
-
-	adbill.AdConfirmations = adconfirmation
+	if err != nil {
+		resp := response.ResponseError{
+			Code:      http.StatusInternalServerError,
+			Message:   http.StatusText(http.StatusInternalServerError),
+			ErrorCode: nil,
+		}
+		return c.JSON(http.StatusInternalServerError, resp)
+	}
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Ad Bill successfully retrieved",
-		Data:    adbill,
+		Message: "Testimonial successfully retrieved",
+		Data:    testi,
 	}
 	return c.JSON(http.StatusOK, resp)
 }

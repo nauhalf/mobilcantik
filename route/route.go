@@ -23,6 +23,7 @@ import (
 	"github.com/nauhalf/mobilcantik/controller/province"
 	"github.com/nauhalf/mobilcantik/controller/reportgroup"
 	"github.com/nauhalf/mobilcantik/controller/reporttype"
+	"github.com/nauhalf/mobilcantik/controller/testimonial"
 	"github.com/nauhalf/mobilcantik/controller/vehiclebrand"
 	"github.com/nauhalf/mobilcantik/controller/vehicletype"
 	custommiddleware "github.com/nauhalf/mobilcantik/middleware"
@@ -248,7 +249,7 @@ func InitRoutes(e *echo.Echo) {
 		{
 			ads.GET("", ad.GetAll)
 			ads.POST("", ad.Create)
-			// ads.PATCH("", reporttype.Update, custommiddleware.JWTUserCredential)
+			ads.POST("/close", testimonial.Create)
 			ads.DELETE("/:id/:password", ad.Delete)
 			ads.DELETE("/forcedelete/:id", ad.ForceDelete, custommiddleware.JWTUserCredential)
 		}
@@ -283,6 +284,17 @@ func InitRoutes(e *echo.Echo) {
 		}
 
 		v1.GET("/adreport/:id", adreport.GetById, custommiddleware.JWT(), custommiddleware.JWTUserCredential)
+
+		// --------------------------------------------------------
+		// GROUP Testimonial
+		// --------------------------------------------------------
+
+		testimonials := v1.Group("/testimonials", custommiddleware.JWT())
+		{
+			testimonials.GET("", testimonial.GetAll)
+		}
+
+		v1.GET("/testimonial/:id", testimonial.GetById, custommiddleware.JWT())
 
 	}
 }
