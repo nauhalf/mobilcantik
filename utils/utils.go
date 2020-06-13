@@ -115,7 +115,7 @@ func ValidateEmail(email string) bool {
 func GenerateFolder() (string, error) {
 	parentDir := GetImageDir()
 	year, month, day := time.Now().Date()
-	pathdir := fmt.Sprintf("%s/%s/%s/%s", parentDir, strconv.FormatInt(int64(year), 10), strconv.FormatInt(int64(month), 10), strconv.FormatInt(int64(day), 10))
+	pathdir := fmt.Sprintf("%s/%s/%s/%s/", parentDir, strconv.FormatInt(int64(year), 10), strconv.FormatInt(int64(month), 10), strconv.FormatInt(int64(day), 10))
 
 	err := CreateDirectory(pathdir)
 	if err != nil {

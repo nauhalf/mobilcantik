@@ -1,6 +1,7 @@
 package reportgroup
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -38,7 +39,7 @@ func GetAll(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "List Report Group successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "List Report Groups"),
 		Data:    reportgroups,
 	}
 	return c.JSON(http.StatusOK, resp)
@@ -60,7 +61,7 @@ func Create(c echo.Context) error {
 	if err := c.Validate(r); err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -82,7 +83,7 @@ func Create(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusCreated,
-		Message: "Report Group successfully created",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyCreated, "Report Group"),
 		Data:    newReportGroup,
 	}
 
@@ -105,7 +106,7 @@ func Update(c echo.Context) error {
 	if err := c.Validate(r); err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -116,7 +117,7 @@ func Update(c echo.Context) error {
 	if exists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Report Group"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -140,7 +141,7 @@ func Update(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Report Group successfully updated",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyUpdated, "Report Group"),
 		Data:    nil,
 	}
 
@@ -154,7 +155,7 @@ func Delete(c echo.Context) error {
 	if cID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -176,14 +177,14 @@ func Delete(c echo.Context) error {
 		if err.Error() == errorutils.StatusZeroAffectedRows {
 			resp := response.ResponseError{
 				Code:      http.StatusNotFound,
-				Message:   http.StatusText(http.StatusNotFound),
+				Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Report Group"),
 				ErrorCode: 1,
 			}
 			return c.JSON(resp.Code, resp)
 		} else if err.(*mysql.MySQLError).Number == errorutils.ErrorMySQLDeleteConstraintFK {
 			resp := response.ResponseError{
 				Code:      http.StatusConflict,
-				Message:   "Report Group is already in used, failed to delete it.",
+				Message:   fmt.Sprintf(errorutils.StatusErrorAlreadyInUsed, "Report Group"),
 				ErrorCode: nil,
 			}
 			return c.JSON(resp.Code, resp)
@@ -199,7 +200,7 @@ func Delete(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Report Group successfully deleted",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyDeleted, "Report Group"),
 		Data:    nil,
 	}
 
@@ -213,7 +214,7 @@ func GetById(c echo.Context) error {
 	if cID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -235,7 +236,7 @@ func GetById(c echo.Context) error {
 	if reportgroup == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Report Group"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -252,7 +253,7 @@ func GetById(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Report Group successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "Report Group"),
 		Data:    reportgroup,
 	}
 	return c.JSON(http.StatusOK, resp)

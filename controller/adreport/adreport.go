@@ -1,6 +1,7 @@
 package adreport
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -49,7 +50,7 @@ func GetAll(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "List Ad Report successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "List Ad Reports"),
 		Data:    all,
 	}
 	return c.JSON(http.StatusOK, resp)
@@ -71,7 +72,7 @@ func Create(c echo.Context) error {
 	if err := c.Validate(r); err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -82,7 +83,7 @@ func Create(c echo.Context) error {
 	if !validEmail {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorInvalidEmail,
 			ErrorCode: 2,
 		}
 		return c.JSON(resp.Code, resp)
@@ -91,7 +92,7 @@ func Create(c echo.Context) error {
 	if len(r.Annotation) < 15 {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   fmt.Sprintf(errorutils.StatusErrorMiminumCharacter, "Annotation", "15"),
 			ErrorCode: 3,
 		}
 		return c.JSON(resp.Code, resp)
@@ -111,7 +112,7 @@ func Create(c echo.Context) error {
 	if adExists == 0 {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Ad"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -122,7 +123,7 @@ func Create(c echo.Context) error {
 	if reportTypeExists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Report Type"),
 			ErrorCode: 2,
 		}
 		return c.JSON(resp.Code, resp)
@@ -136,6 +137,15 @@ func Create(c echo.Context) error {
 	adreport.ReporterEmail = r.ReporterEmail
 
 	newAdReport, err := adreportrepository.Create(db.DBCon, adreport)
+
+	if err != nil {
+		resp := response.ResponseError{
+			Code:      http.StatusInternalServerError,
+			Message:   http.StatusText(http.StatusInternalServerError),
+			ErrorCode: nil,
+		}
+		return c.JSON(http.StatusInternalServerError, resp)
+	}
 
 	ad, err := adrepository.GetAdById(db.DBCon, adreport.AdId)
 	if err != nil {
@@ -167,7 +177,7 @@ func Create(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusCreated,
-		Message: "Ad Report successfully created",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyCreated, "Ad Report"),
 		Data:    newAdReport,
 	}
 
@@ -181,7 +191,7 @@ func Delete(c echo.Context) error {
 	if cID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -203,14 +213,14 @@ func Delete(c echo.Context) error {
 		if err.Error() == errorutils.StatusZeroAffectedRows {
 			resp := response.ResponseError{
 				Code:      http.StatusNotFound,
-				Message:   http.StatusText(http.StatusNotFound),
+				Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Ad"),
 				ErrorCode: 1,
 			}
 			return c.JSON(resp.Code, resp)
 		} else if err.(*mysql.MySQLError).Number == errorutils.ErrorMySQLDeleteConstraintFK {
 			resp := response.ResponseError{
 				Code:      http.StatusConflict,
-				Message:   "Ad Report is already in used, failed to delete it.",
+				Message:   fmt.Sprintf(errorutils.StatusErrorAlreadyInUsed, "Ad Report"),
 				ErrorCode: nil,
 			}
 			return c.JSON(resp.Code, resp)
@@ -226,7 +236,7 @@ func Delete(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Ad Report successfully deleted",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyCreated, "Ad Report"),
 		Data:    nil,
 	}
 
@@ -240,7 +250,7 @@ func GetById(c echo.Context) error {
 	if cID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -262,7 +272,7 @@ func GetById(c echo.Context) error {
 	if adreport == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Ad Report"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -300,7 +310,7 @@ func GetById(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Ad Report successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "Ad Report"),
 		Data:    adreport,
 	}
 	return c.JSON(http.StatusOK, resp)

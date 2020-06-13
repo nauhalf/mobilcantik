@@ -110,7 +110,7 @@ func GetAll(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "List Ad successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "List ads"),
 		Data:    all,
 	}
 	return c.JSON(http.StatusOK, resp)
@@ -132,7 +132,7 @@ func Create(c echo.Context) error {
 	if err := c.Validate(r); err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -162,7 +162,7 @@ func Create(c echo.Context) error {
 	day := now.Day()
 
 	newfile, err := HandleUpload(images)
-	dir := fmt.Sprintf("/%s/%s/%s", strconv.FormatInt(int64(year), 10), strconv.FormatInt(int64(month), 10), strconv.FormatInt(int64(day), 10))
+	dir := fmt.Sprintf("%s/%s/%s/", strconv.FormatInt(int64(year), 10), strconv.FormatInt(int64(month), 10), strconv.FormatInt(int64(day), 10))
 	if err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusInternalServerError,
@@ -211,7 +211,7 @@ func Create(c echo.Context) error {
 	if err != nil {
 		var deleteFile []string
 		for _, file := range newfile {
-			deleteFile = append(deleteFile, dir+"/"+file)
+			deleteFile = append(deleteFile, dir+file)
 		}
 
 		_ = HandleDelete(deleteFile)
@@ -225,7 +225,7 @@ func Create(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusCreated,
-		Message: "Ad successfully created",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyCreated, "Ad"),
 		Data:    newAd,
 	}
 
@@ -237,7 +237,7 @@ func ValidateCreateExists(r RequestCreate) *response.ResponseError {
 	if cityExists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "City"),
 			ErrorCode: 1,
 		}
 
@@ -248,7 +248,7 @@ func ValidateCreateExists(r RequestCreate) *response.ResponseError {
 	if adTypeExists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Ad Type"),
 			ErrorCode: 2,
 		}
 
@@ -259,7 +259,7 @@ func ValidateCreateExists(r RequestCreate) *response.ResponseError {
 	if vehicleTypeExists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Vehicle Type"),
 			ErrorCode: 3,
 		}
 
@@ -270,7 +270,7 @@ func ValidateCreateExists(r RequestCreate) *response.ResponseError {
 	if vehicleBrandExists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Brand"),
 			ErrorCode: 4,
 		}
 
@@ -281,7 +281,7 @@ func ValidateCreateExists(r RequestCreate) *response.ResponseError {
 	if conditionExists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Condition"),
 			ErrorCode: 5,
 		}
 
@@ -292,7 +292,7 @@ func ValidateCreateExists(r RequestCreate) *response.ResponseError {
 	if fuelExists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Fuel"),
 			ErrorCode: 6,
 		}
 
@@ -302,7 +302,7 @@ func ValidateCreateExists(r RequestCreate) *response.ResponseError {
 	if len(r.FacilityIds) < 1 {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 
@@ -313,7 +313,7 @@ func ValidateCreateExists(r RequestCreate) *response.ResponseError {
 	if !facilityExists {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Facility"),
 			ErrorCode: 7,
 		}
 
@@ -328,7 +328,7 @@ func ValidateFile(file []*multipart.FileHeader) *response.ResponseError {
 	if len(file) < 1 {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return &resp
@@ -339,7 +339,7 @@ func ValidateFile(file []*multipart.FileHeader) *response.ResponseError {
 	if !validateType {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorImageType,
 			ErrorCode: 4,
 		}
 
@@ -351,7 +351,7 @@ func ValidateFile(file []*multipart.FileHeader) *response.ResponseError {
 		if !validatesize {
 			resp := response.ResponseError{
 				Code:      http.StatusUnprocessableEntity,
-				Message:   http.StatusText(http.StatusUnprocessableEntity),
+				Message:   fmt.Sprintf(errorutils.StatusErrorImageSize, "1 MB"),
 				ErrorCode: 5,
 			}
 
@@ -366,7 +366,7 @@ func ValidateYear(c echo.Context, year int, now int) *response.ResponseError {
 	if !validyear {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorInvalidYear,
 			ErrorCode: 3,
 		}
 
@@ -379,71 +379,13 @@ func ValidateEmail(email string) *response.ResponseError {
 	if !utils.ValidateEmail(email) {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorInvalidEmail,
 			ErrorCode: 2,
 		}
 		return &resp
 	}
 	return nil
 }
-
-// func Update(c echo.Context) error {
-
-// 	r := new(RequestUpdate)
-
-// 	if err := c.Bind(r); err != nil {
-// 		resp := response.ResponseError{
-// 			Code:      http.StatusInternalServerError,
-// 			Message:   http.StatusText(http.StatusInternalServerError),
-// 			ErrorCode: nil,
-// 		}
-// 		return c.JSON(resp.Code, resp)
-// 	}
-
-// 	if err := c.Validate(r); err != nil {
-// 		resp := response.ResponseError{
-// 			Code:      http.StatusUnprocessableEntity,
-// 			Message:   http.StatusText(http.StatusUnprocessableEntity),
-// 			ErrorCode: 1,
-// 		}
-// 		return c.JSON(resp.Code, resp)
-// 	}
-
-// 	exists, _ := adclosingreasonrepository.GetById(db.DBCon, r.AdClosingReasonId)
-
-// 	if exists == nil {
-// 		resp := response.ResponseError{
-// 			Code:      http.StatusNotFound,
-// 			Message:   http.StatusText(http.StatusNotFound),
-// 			ErrorCode: 1,
-// 		}
-// 		return c.JSON(resp.Code, resp)
-// 	}
-
-// 	// adclosingreason := new(model.AdClosingReason)
-// 	// adclosingreason.AdClosingReasonId = r.AdClosingReasonId
-// 	// adclosingreason.ReasonName = r.ReasonName
-// 	// adclosingreason.Annotation = &r.Annotation
-
-// 	// err := adclosingreasonrepository.Update(db.DBCon, adclosingreason)
-
-// 	// if err != nil {
-// 	// 	resp := response.ResponseError{
-// 	// 		Code:      http.StatusInternalServerError,
-// 	// 		Message:   http.StatusText(http.StatusInternalServerError),
-// 	// 		ErrorCode: nil,
-// 	// 	}
-// 	// 	return c.JSON(resp.Code, resp)
-// 	// }
-
-// 	resp := response.ResponseSuccess{
-// 		Code:    http.StatusOK,
-// 		Message: "Ad successfully updated",
-// 		Data:    nil,
-// 	}
-
-// 	return c.JSON(resp.Code, resp)
-// }
 
 func Delete(c echo.Context) error {
 
@@ -453,7 +395,7 @@ func Delete(c echo.Context) error {
 	if adId == "" || password == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -475,7 +417,7 @@ func Delete(c echo.Context) error {
 	if ad == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Ad"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -484,7 +426,7 @@ func Delete(c echo.Context) error {
 	if password != *pw {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   http.StatusText(http.StatusInternalServerError),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -498,14 +440,14 @@ func Delete(c echo.Context) error {
 		if err.Error() == errorutils.StatusZeroAffectedRows {
 			resp := response.ResponseError{
 				Code:      http.StatusNotFound,
-				Message:   http.StatusText(http.StatusNotFound),
+				Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Ad"),
 				ErrorCode: 1,
 			}
 			return c.JSON(resp.Code, resp)
 		} else if err.(*mysql.MySQLError).Number == errorutils.ErrorMySQLDeleteConstraintFK {
 			resp := response.ResponseError{
 				Code:      http.StatusConflict,
-				Message:   "Ad is already in used, failed to delete it.",
+				Message:   fmt.Sprintf(errorutils.StatusErrorAlreadyInUsed, "Ad"),
 				ErrorCode: nil,
 			}
 			return c.JSON(resp.Code, resp)
@@ -522,7 +464,7 @@ func Delete(c echo.Context) error {
 	_ = HandleDelete(images)
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Ad successfully deleted",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyDeleted, "Ad"),
 		Data:    nil,
 	}
 
@@ -558,7 +500,7 @@ func ForceDelete(c echo.Context) error {
 	if ad == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Ad"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -572,14 +514,14 @@ func ForceDelete(c echo.Context) error {
 		if err.Error() == errorutils.StatusZeroAffectedRows {
 			resp := response.ResponseError{
 				Code:      http.StatusNotFound,
-				Message:   http.StatusText(http.StatusNotFound),
+				Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Ad"),
 				ErrorCode: 1,
 			}
 			return c.JSON(resp.Code, resp)
 		} else if err.(*mysql.MySQLError).Number == errorutils.ErrorMySQLDeleteConstraintFK {
 			resp := response.ResponseError{
 				Code:      http.StatusConflict,
-				Message:   "Ad is already in used, failed to force delete it.",
+				Message:   fmt.Sprintf(errorutils.StatusErrorSuccessfullyDeleted, "Ad"),
 				ErrorCode: nil,
 			}
 			return c.JSON(resp.Code, resp)
@@ -596,7 +538,7 @@ func ForceDelete(c echo.Context) error {
 	_ = HandleDelete(images)
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Ad successfully force deleted",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyDeleted, "Ad"),
 		Data:    nil,
 	}
 
@@ -610,7 +552,7 @@ func GetById(c echo.Context) error {
 	if cID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -638,10 +580,10 @@ func GetById(c echo.Context) error {
 		return c.JSON(resp.Code, resp)
 	}
 
-	if adx.IsActive == false {
+	if !adx.IsActive {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   "Ad still not active",
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -679,7 +621,7 @@ func GetById(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Ad successfully retrieved",
+		Message: fmt.Sprint(errorutils.StatusErrorSuccessfullyRetrieved, "Ad"),
 		Data:    adsingleresponse,
 	}
 	return c.JSON(http.StatusOK, resp)
@@ -705,7 +647,7 @@ func HandleUpload(files []*multipart.FileHeader) ([]string, error) {
 
 		// Destination
 		fileName := utils.GenerateNewFile(file.Filename)
-		newFile := pathdir + "/" + fileName
+		newFile := pathdir + fileName
 		dst, err := os.Create(newFile)
 		if err != nil {
 			return nil, err
@@ -752,7 +694,7 @@ func Verification(c echo.Context) error {
 	if err := c.Validate(r); err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -763,7 +705,7 @@ func Verification(c echo.Context) error {
 	if ad == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Ad"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -772,16 +714,16 @@ func Verification(c echo.Context) error {
 	if r.Password != *pw {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorIncorrectPassword,
 			ErrorCode: 2,
 		}
 		return c.JSON(resp.Code, resp)
 	}
 
-	if ad.AdStatusTypeId == 2 {
+	if ad.AdStatusTypeId == 1 {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorPaidToActivateAd,
 			ErrorCode: 3,
 		}
 		return c.JSON(resp.Code, resp)
@@ -790,7 +732,7 @@ func Verification(c echo.Context) error {
 	if ad.IsActive {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   fmt.Sprintf(errorutils.StatusErrorAlreadyActive, "Ad"),
 			ErrorCode: 4,
 		}
 		return c.JSON(resp.Code, resp)

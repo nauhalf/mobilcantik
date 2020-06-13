@@ -1,12 +1,14 @@
 package province
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
 	"github.com/nauhalf/mobilcantik/db"
 	"github.com/nauhalf/mobilcantik/repository/provincerepository"
 	"github.com/nauhalf/mobilcantik/response"
+	errorutils "github.com/nauhalf/mobilcantik/utils/error"
 )
 
 func GetAll(c echo.Context) error {
@@ -24,7 +26,7 @@ func GetAll(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "List province successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "List Provinces"),
 		Data:    provinces,
 	}
 	return c.JSON(http.StatusOK, resp)
@@ -37,7 +39,7 @@ func GetById(c echo.Context) error {
 	if pID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -48,7 +50,7 @@ func GetById(c echo.Context) error {
 	if province == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Province"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -65,7 +67,7 @@ func GetById(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Province successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "Province"),
 		Data:    province,
 	}
 	return c.JSON(http.StatusOK, resp)

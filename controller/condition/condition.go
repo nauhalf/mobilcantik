@@ -1,6 +1,7 @@
 package condition
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -38,7 +39,7 @@ func GetAll(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "List condition successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "List Conditions"),
 		Data:    conditions,
 	}
 	return c.JSON(http.StatusOK, resp)
@@ -60,7 +61,7 @@ func Create(c echo.Context) error {
 	if err := c.Validate(r); err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -82,7 +83,7 @@ func Create(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusCreated,
-		Message: "Condition successfully created",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyCreated, "Condition"),
 		Data:    newCondition,
 	}
 
@@ -105,7 +106,7 @@ func Update(c echo.Context) error {
 	if err := c.Validate(r); err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -116,7 +117,7 @@ func Update(c echo.Context) error {
 	if exists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Condition"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -140,7 +141,7 @@ func Update(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Condition successfully updated",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyUpdated, "Condition"),
 		Data:    nil,
 	}
 
@@ -154,7 +155,7 @@ func Delete(c echo.Context) error {
 	if cID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -176,14 +177,14 @@ func Delete(c echo.Context) error {
 		if err.Error() == errorutils.StatusZeroAffectedRows {
 			resp := response.ResponseError{
 				Code:      http.StatusNotFound,
-				Message:   http.StatusText(http.StatusNotFound),
+				Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Condition"),
 				ErrorCode: 1,
 			}
 			return c.JSON(resp.Code, resp)
 		} else if err.(*mysql.MySQLError).Number == errorutils.ErrorMySQLDeleteConstraintFK {
 			resp := response.ResponseError{
 				Code:      http.StatusConflict,
-				Message:   "Condition is already in used, failed to delete it.",
+				Message:   fmt.Sprintf(errorutils.StatusErrorAlreadyInUsed, "Condition"),
 				ErrorCode: nil,
 			}
 			return c.JSON(resp.Code, resp)
@@ -199,7 +200,7 @@ func Delete(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Condition successfully deleted",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyDeleted, "Condition"),
 		Data:    nil,
 	}
 
@@ -213,7 +214,7 @@ func GetById(c echo.Context) error {
 	if cID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -235,7 +236,7 @@ func GetById(c echo.Context) error {
 	if condition == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Condition"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -252,7 +253,7 @@ func GetById(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Condition successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "Condition"),
 		Data:    condition,
 	}
 	return c.JSON(http.StatusOK, resp)

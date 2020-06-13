@@ -13,6 +13,7 @@ import (
 	"github.com/nauhalf/mobilcantik/repository/apikeyrepository"
 	"github.com/nauhalf/mobilcantik/repository/userrepository"
 	"github.com/nauhalf/mobilcantik/response"
+	errorutils "github.com/nauhalf/mobilcantik/utils/error"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -24,15 +25,14 @@ func GenerateToken(c echo.Context) (err error) {
 
 	if szApiKey == "" {
 		resp := response.ResponseError{
-			Code:      http.StatusBadRequest,
-			Message:   http.StatusText(http.StatusBadRequest),
+			Code:      http.StatusUnprocessableEntity,
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(http.StatusBadRequest, resp)
 	}
 
 	if err != nil {
-		log.Fatal(err.Error)
 		resp := response.ResponseError{
 			Code:      http.StatusInternalServerError,
 			Message:   err.Error(),
@@ -42,7 +42,14 @@ func GenerateToken(c echo.Context) (err error) {
 	}
 
 	apiKey, err := apikeyrepository.GetApiKeyById(db.DBCon, szApiKey)
-
+	if err != nil {
+		resp := response.ResponseError{
+			Code:      http.StatusInternalServerError,
+			Message:   err.Error(),
+			ErrorCode: nil,
+		}
+		return c.JSON(http.StatusInternalServerError, resp)
+	}
 	if apiKey == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnauthorized,

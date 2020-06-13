@@ -3,7 +3,7 @@ package response
 type ResponseError struct {
 	Code      int         `json:"code"`
 	Message   string      `json:"message"`
-	ErrorCode interface{} `json:"errorcode"`
+	ErrorCode interface{} `json:"errors"`
 }
 
 type ResponseSuccess struct {

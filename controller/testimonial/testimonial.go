@@ -1,6 +1,7 @@
 package testimonial
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -10,6 +11,7 @@ import (
 	"github.com/nauhalf/mobilcantik/repository/model"
 	"github.com/nauhalf/mobilcantik/repository/testimonialrepository"
 	"github.com/nauhalf/mobilcantik/response"
+	errorutils "github.com/nauhalf/mobilcantik/utils/error"
 )
 
 type RequestCreate struct {
@@ -34,7 +36,7 @@ func GetAll(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "List Testimonial successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "List Testimonials"),
 		Data:    testimonials,
 	}
 	return c.JSON(http.StatusOK, resp)
@@ -56,7 +58,7 @@ func Create(c echo.Context) error {
 	if err := c.Validate(r); err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -67,7 +69,7 @@ func Create(c echo.Context) error {
 	if ad == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Ad"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -76,7 +78,7 @@ func Create(c echo.Context) error {
 	if r.Password != *pw {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorIncorrectPassword,
 			ErrorCode: 2,
 		}
 		return c.JSON(resp.Code, resp)
@@ -87,7 +89,7 @@ func Create(c echo.Context) error {
 	if testimonialExists != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   "Testimonial already exists",
 			ErrorCode: 3,
 		}
 		return c.JSON(resp.Code, resp)
@@ -111,7 +113,7 @@ func Create(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusCreated,
-		Message: "Testimonial successfully created",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyCreated, "Testimonial"),
 		Data:    newTesti,
 	}
 
@@ -125,7 +127,7 @@ func GetById(c echo.Context) error {
 	if cID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -147,7 +149,7 @@ func GetById(c echo.Context) error {
 	if testi == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Testimonial"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -164,7 +166,7 @@ func GetById(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Testimonial successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "Testimonial"),
 		Data:    testi,
 	}
 	return c.JSON(http.StatusOK, resp)

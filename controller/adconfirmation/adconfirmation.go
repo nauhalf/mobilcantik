@@ -18,6 +18,7 @@ import (
 	"github.com/nauhalf/mobilcantik/repository/model"
 	"github.com/nauhalf/mobilcantik/response"
 	"github.com/nauhalf/mobilcantik/utils"
+	errorutils "github.com/nauhalf/mobilcantik/utils/error"
 )
 
 type RequestCreate struct {
@@ -47,7 +48,7 @@ func Create(c echo.Context) error {
 	if err := c.Validate(r); err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -73,7 +74,7 @@ func Create(c echo.Context) error {
 	day := now.Day()
 
 	newfile, err := HandleUpload(images)
-	dir := fmt.Sprintf("/%s/%s/%s", strconv.FormatInt(int64(year), 10), strconv.FormatInt(int64(month), 10), strconv.FormatInt(int64(day), 10))
+	dir := fmt.Sprintf("%s/%s/%s/", strconv.FormatInt(int64(year), 10), strconv.FormatInt(int64(month), 10), strconv.FormatInt(int64(day), 10))
 	if err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusInternalServerError,
@@ -97,7 +98,7 @@ func Create(c echo.Context) error {
 	if err != nil {
 		var deleteFile []string
 		for _, file := range newfile {
-			deleteFile = append(deleteFile, dir+"/"+file)
+			deleteFile = append(deleteFile, dir+file)
 		}
 
 		_ = HandleDelete(deleteFile)
@@ -111,7 +112,7 @@ func Create(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusCreated,
-		Message: "Ad confirmation bill successfully created",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyCreated, "Ad Confirmation"),
 		Data:    nil,
 	}
 
@@ -123,7 +124,7 @@ func ValidateCreateExists(r RequestCreate) *response.ResponseError {
 	if adExists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Ad"),
 			ErrorCode: 1,
 		}
 
@@ -133,7 +134,7 @@ func ValidateCreateExists(r RequestCreate) *response.ResponseError {
 	if r.Password != *pw {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorIncorrectPassword,
 			ErrorCode: 2,
 		}
 
@@ -144,7 +145,7 @@ func ValidateCreateExists(r RequestCreate) *response.ResponseError {
 	if adbillexists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Ad Bill"),
 			ErrorCode: 2,
 		}
 
@@ -154,7 +155,7 @@ func ValidateCreateExists(r RequestCreate) *response.ResponseError {
 	if adbillexists.AdBillId != r.AdBillId {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   fmt.Sprintf(errorutils.StatusErrorNotSame, "Ad Bill"),
 			ErrorCode: 3,
 		}
 
@@ -164,7 +165,7 @@ func ValidateCreateExists(r RequestCreate) *response.ResponseError {
 	if adbillexists.Balance == 0 {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   fmt.Sprintf(errorutils.StatusErrorPaid, "Ad Bill"),
 			ErrorCode: 4,
 		}
 
@@ -175,7 +176,7 @@ func ValidateCreateExists(r RequestCreate) *response.ResponseError {
 	if bankAccountExists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Bank Account"),
 			ErrorCode: 3,
 		}
 
@@ -190,7 +191,7 @@ func ValidateFile(file []*multipart.FileHeader) *response.ResponseError {
 	if file == nil || len(file) < 1 {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return &resp
@@ -201,7 +202,7 @@ func ValidateFile(file []*multipart.FileHeader) *response.ResponseError {
 	if !validateType {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorImageType,
 			ErrorCode: 4,
 		}
 
@@ -213,7 +214,7 @@ func ValidateFile(file []*multipart.FileHeader) *response.ResponseError {
 		if !validatesize {
 			resp := response.ResponseError{
 				Code:      http.StatusUnprocessableEntity,
-				Message:   http.StatusText(http.StatusUnprocessableEntity),
+				Message:   fmt.Sprintf(errorutils.StatusErrorImageSize, "1 MB"),
 				ErrorCode: 5,
 			}
 
@@ -222,88 +223,6 @@ func ValidateFile(file []*multipart.FileHeader) *response.ResponseError {
 	}
 	return nil
 }
-
-// func GetById(c echo.Context) error {
-
-// 	cID := c.Param("id")
-
-// 	if cID == "" {
-// 		resp := response.ResponseError{
-// 			Code:      http.StatusUnprocessableEntity,
-// 			Message:   http.StatusText(http.StatusUnprocessableEntity),
-// 			ErrorCode: 1,
-// 		}
-// 		return c.JSON(resp.Code, resp)
-// 	}
-
-// 	intID, err := strconv.ParseUint(cID, 10, 64)
-
-// 	if err != nil {
-// 		resp := response.ResponseError{
-// 			Code:      http.StatusInternalServerError,
-// 			Message:   http.StatusText(http.StatusInternalServerError),
-// 			ErrorCode: nil,
-// 		}
-// 		return c.JSON(resp.Code, resp)
-// 	}
-
-// 	adx, _ := adrepository.GetAdById(db.DBCon, intID)
-
-// 	if adx == nil {
-// 		resp := response.ResponseError{
-// 			Code:      http.StatusNotFound,
-// 			Message:   http.StatusText(http.StatusNotFound),
-// 			ErrorCode: 1,
-// 		}
-// 		return c.JSON(resp.Code, resp)
-// 	}
-
-// 	if adx.IsActive == false {
-// 		resp := response.ResponseError{
-// 			Code:      http.StatusUnprocessableEntity,
-// 			Message:   http.StatusText(http.StatusUnprocessableEntity),
-// 			ErrorCode: 1,
-// 		}
-// 		return c.JSON(resp.Code, resp)
-// 	}
-
-// 	err = adrepository.Increment(db.DBCon, intID)
-
-// 	if err != nil {
-// 		resp := response.ResponseError{
-// 			Code:      http.StatusInternalServerError,
-// 			Message:   http.StatusText(http.StatusInternalServerError),
-// 			ErrorCode: nil,
-// 		}
-// 		return c.JSON(http.StatusInternalServerError, resp)
-// 	}
-
-// 	ad, err := adrepository.GetAdById(db.DBCon, intID)
-// 	if err != nil {
-// 		resp := response.ResponseError{
-// 			Code:      http.StatusInternalServerError,
-// 			Message:   http.StatusText(http.StatusInternalServerError),
-// 			ErrorCode: nil,
-// 		}
-// 		return c.JSON(http.StatusInternalServerError, resp)
-// 	}
-
-// 	adsingleresponse := new(adrepository.AdSingleResponse)
-// 	getV, _ := adrepository.GetAdVehicleByAdId(db.DBCon, ad.AdId)
-// 	getF, _ := adrepository.GetFacilitiesByAdId(db.DBCon, ad.AdId)
-// 	getI, _ := adrepository.GetImagesByAdId(db.DBCon, ad.AdId)
-// 	adsingleresponse.Vehicle = *getV
-// 	adsingleresponse.Facilities = getF
-// 	adsingleresponse.Ad = *ad
-// 	adsingleresponse.Images = getI
-
-// 	resp := response.ResponseSuccess{
-// 		Code:    http.StatusOK,
-// 		Message: "Ad successfully retrieved",
-// 		Data:    adsingleresponse,
-// 	}
-// 	return c.JSON(http.StatusOK, resp)
-// }
 
 func HandleUpload(files []*multipart.FileHeader) ([]string, error) {
 
@@ -325,7 +244,7 @@ func HandleUpload(files []*multipart.FileHeader) ([]string, error) {
 
 		// Destination
 		fileName := utils.GenerateNewFile(file.Filename)
-		newFile := pathdir + "/" + fileName
+		newFile := pathdir + fileName
 		dst, err := os.Create(newFile)
 		if err != nil {
 			return nil, err

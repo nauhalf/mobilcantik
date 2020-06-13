@@ -1,6 +1,7 @@
 package vehicletype
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -41,7 +42,7 @@ func Create(c echo.Context) error {
 	if vehicleTypeName == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 
@@ -68,7 +69,7 @@ func Create(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusCreated,
-		Message: "Vehicle Type successfully created",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyCreated, "Vehicle Type"),
 		Data:    newVehicleType,
 	}
 
@@ -97,7 +98,7 @@ func Update(c echo.Context) error {
 	if err := c.Validate(r); err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -108,7 +109,7 @@ func Update(c echo.Context) error {
 	if vExists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Vehicle Type"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -135,7 +136,7 @@ func Update(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Vehicle Type successfully updated",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyUpdated, "Vehicle Type"),
 		Data:    nil,
 	}
 
@@ -149,7 +150,7 @@ func Delete(c echo.Context) error {
 	if vID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -170,14 +171,14 @@ func Delete(c echo.Context) error {
 		if err.Error() == errorutils.StatusZeroAffectedRows {
 			resp := response.ResponseError{
 				Code:      http.StatusNotFound,
-				Message:   http.StatusText(http.StatusNotFound),
+				Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Vehicle Type"),
 				ErrorCode: 1,
 			}
 			return c.JSON(resp.Code, resp)
 		} else if err.(*mysql.MySQLError).Number == errorutils.ErrorMySQLDeleteConstraintFK {
 			resp := response.ResponseError{
 				Code:      http.StatusConflict,
-				Message:   "Vehicle Type is already in used, failed to delete it.",
+				Message:   fmt.Sprintf(errorutils.StatusErrorAlreadyInUsed, "Vehicle Type"),
 				ErrorCode: nil,
 			}
 			return c.JSON(resp.Code, resp)
@@ -193,7 +194,7 @@ func Delete(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Vehicle Type successfully deleted",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyDeleted, "Vehicle Type"),
 		Data:    nil,
 	}
 
@@ -207,7 +208,7 @@ func GetById(c echo.Context) error {
 	if vID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -229,7 +230,7 @@ func GetById(c echo.Context) error {
 	if vehicletype == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Vehicle Type"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -246,7 +247,7 @@ func GetById(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Vehicle Type successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "Vehicle Type"),
 		Data:    vehicletype,
 	}
 	return c.JSON(http.StatusOK, resp)

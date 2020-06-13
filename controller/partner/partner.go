@@ -1,6 +1,7 @@
 package partner
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -38,7 +39,7 @@ func GetAll(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "List Partner successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "List Partners"),
 		Data:    partners,
 	}
 	return c.JSON(http.StatusOK, resp)
@@ -60,7 +61,7 @@ func Create(c echo.Context) error {
 	if err := c.Validate(r); err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -83,7 +84,7 @@ func Create(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusCreated,
-		Message: "Partner successfully created",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyCreated, "Partner"),
 		Data:    newPartner,
 	}
 
@@ -106,7 +107,7 @@ func Update(c echo.Context) error {
 	if err := c.Validate(r); err != nil {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -117,7 +118,7 @@ func Update(c echo.Context) error {
 	if exists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Partner"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -142,7 +143,7 @@ func Update(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Partner successfully updated",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyUpdated, "Partner"),
 		Data:    nil,
 	}
 
@@ -156,7 +157,7 @@ func Delete(c echo.Context) error {
 	if cID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -178,7 +179,7 @@ func Delete(c echo.Context) error {
 		if err.Error() == errorutils.StatusZeroAffectedRows {
 			resp := response.ResponseError{
 				Code:      http.StatusNotFound,
-				Message:   http.StatusText(http.StatusNotFound),
+				Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Partner"),
 				ErrorCode: 1,
 			}
 			return c.JSON(resp.Code, resp)
@@ -194,7 +195,7 @@ func Delete(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Partner successfully deleted",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyDeleted, "Partner"),
 		Data:    nil,
 	}
 
@@ -208,7 +209,7 @@ func GetById(c echo.Context) error {
 	if cID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -230,7 +231,7 @@ func GetById(c echo.Context) error {
 	if partner == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Partner"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -247,7 +248,7 @@ func GetById(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Partner successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "Partner"),
 		Data:    partner,
 	}
 	return c.JSON(http.StatusOK, resp)

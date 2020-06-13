@@ -93,7 +93,8 @@ func GetAll(db *sql.DB, page int, arr_province []string, arr_city []string, arr_
 	ON city.szProvinceId = prov.szProvinceId 
 	WHERE TRUE 
 	AND ad.isActive = 1
-	AND ad.isExpired = 0`
+	AND ad.isExpired = 0
+	AND DATE(ad.dtmExpired) > NOW()`
 
 	qrySelectTotal := `SELECT COUNT(*) AS total `
 

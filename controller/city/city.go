@@ -1,6 +1,7 @@
 package city
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -8,6 +9,7 @@ import (
 	"github.com/nauhalf/mobilcantik/repository/cityrepository"
 	"github.com/nauhalf/mobilcantik/repository/provincerepository"
 	"github.com/nauhalf/mobilcantik/response"
+	errorutils "github.com/nauhalf/mobilcantik/utils/error"
 )
 
 func GetAll(c echo.Context) error {
@@ -16,8 +18,8 @@ func GetAll(c echo.Context) error {
 
 	if province_id == "" {
 		resp := response.ResponseError{
-			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Code:      http.StatusUnprocessableEntity,
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 
@@ -29,7 +31,7 @@ func GetAll(c echo.Context) error {
 	if pExists == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Province"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -48,7 +50,7 @@ func GetAll(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "List city successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "List cities"),
 		Data:    cities,
 	}
 	return c.JSON(http.StatusOK, resp)
@@ -61,7 +63,7 @@ func GetById(c echo.Context) error {
 	if cID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -72,7 +74,7 @@ func GetById(c echo.Context) error {
 	if city == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "City"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -89,7 +91,7 @@ func GetById(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "City successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "City"),
 		Data:    city,
 	}
 	return c.JSON(http.StatusOK, resp)

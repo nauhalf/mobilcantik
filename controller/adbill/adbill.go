@@ -1,6 +1,7 @@
 package adbill
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -11,6 +12,7 @@ import (
 	"github.com/nauhalf/mobilcantik/repository/adrepository"
 	"github.com/nauhalf/mobilcantik/repository/model"
 	"github.com/nauhalf/mobilcantik/response"
+	errorutils "github.com/nauhalf/mobilcantik/utils/error"
 )
 
 type RequestCreate struct {
@@ -48,7 +50,7 @@ func GetAll(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "List Ad Bill successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "List ad bills"),
 		Data:    all,
 	}
 	return c.JSON(http.StatusOK, resp)
@@ -63,7 +65,7 @@ func ConfirmPaymentBill(c echo.Context) error {
 
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -93,7 +95,7 @@ func ConfirmPaymentBill(c echo.Context) error {
 	if password != *pw {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorIncorrectPassword,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -102,7 +104,7 @@ func ConfirmPaymentBill(c echo.Context) error {
 	if ad.AdStatusTypeId != 1 {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorNotInWaitingFeeConfirmationState,
 			ErrorCode: 2,
 		}
 		return c.JSON(resp.Code, resp)
@@ -112,7 +114,7 @@ func ConfirmPaymentBill(c echo.Context) error {
 	if ad == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Ad Bill"),
 			ErrorCode: 2,
 		}
 		return c.JSON(resp.Code, resp)
@@ -133,7 +135,7 @@ func ConfirmPaymentBill(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Ad Bill Payment successfully confirmed",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyConfirmed, "Ad Bill"),
 		Data:    nil,
 	}
 
@@ -147,7 +149,7 @@ func GetById(c echo.Context) error {
 	if cID == "" {
 		resp := response.ResponseError{
 			Code:      http.StatusUnprocessableEntity,
-			Message:   http.StatusText(http.StatusUnprocessableEntity),
+			Message:   errorutils.StatusErrorFillRequiredForm,
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -169,7 +171,7 @@ func GetById(c echo.Context) error {
 	if adbill == nil {
 		resp := response.ResponseError{
 			Code:      http.StatusNotFound,
-			Message:   http.StatusText(http.StatusNotFound),
+			Message:   fmt.Sprintf(errorutils.StatusErrorResourceNotExists, "Ad Bill"),
 			ErrorCode: 1,
 		}
 		return c.JSON(resp.Code, resp)
@@ -181,7 +183,7 @@ func GetById(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: "Ad Bill successfully retrieved",
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "Ad Bill"),
 		Data:    adbill,
 	}
 	return c.JSON(http.StatusOK, resp)
