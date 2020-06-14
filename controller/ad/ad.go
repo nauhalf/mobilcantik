@@ -630,7 +630,7 @@ func GetById(c echo.Context) error {
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
-		Message: fmt.Sprint(errorutils.StatusErrorSuccessfullyRetrieved, "Ad"),
+		Message: fmt.Sprintf(errorutils.StatusErrorSuccessfullyRetrieved, "Ad"),
 		Data:    adsingleresponse,
 	}
 	return c.JSON(http.StatusOK, resp)

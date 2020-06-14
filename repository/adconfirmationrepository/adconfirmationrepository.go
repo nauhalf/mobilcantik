@@ -169,7 +169,7 @@ func GetByAdId(db *sql.DB, adId uint64) ([]AdConfirmationResponse, error) {
 			&filename,
 		)
 
-		path := dir + "/" + filename
+		path := dir + filename
 		adconfirmationres.Path = path
 		adconfirmationres.AdConfirmation = *adconfirmation
 		if err != nil {

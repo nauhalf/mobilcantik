@@ -254,6 +254,17 @@ func GetAll(db *sql.DB, page int, arr_province []string, arr_city []string, arr_
 			return nil, err
 		}
 
+		var dir, file string
+		err = db.QueryRow(`SELECT 
+				szDirectory, szFilename
+				FROM
+				APP_AdImage
+				WHERE intAdId = ? LIMIT 1`, ad.AdId).Scan(&dir, &file)
+
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+		ad.Thumbnail = dir + file
 		getAllResponse.Ads = append(getAllResponse.Ads, *ad)
 
 	}
@@ -336,7 +347,7 @@ func Create(db *sql.DB, ad *model.Ad, password string, advehicle *model.AdVehicl
 	resp.BillId = idBill
 
 	for _, file := range filename {
-		path := fmt.Sprintf("%s/%s", filelocation, file)
+		path := fmt.Sprintf("%s%s", filelocation, file)
 		resp.Images = append(resp.Images, path)
 	}
 
@@ -1018,7 +1029,7 @@ func GetImagesByAdId(db *sql.DB, adId uint64) ([]string, error) {
 			return nil, err
 		}
 
-		path := dir + "/" + file
+		path := dir + file
 		paths = append(paths, path)
 
 	}
