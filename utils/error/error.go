@@ -28,3 +28,23 @@ const (
 	StatusErrorPaid                             = "%s is already paid"
 	StatusErrorMiminumCharacter                 = "%s's minimum total characters is %s"
 )
+
+const (
+	FormatEmailAdCreatedFree = "Dear %s, iklan anda sudah dibuat dengan nomor iklan [%s].\n" +
+		"Berikut adalah password untuk mengaktifkan iklan anda agar dapat ditayangkan [%s].\n" +
+		"Silahkan verifikasi iklan anda melalui fitur verifikasi di MobilCantik.\n\n" +
+
+		"Gunakan password dan nomor iklan untuk melakukan penayangan, penutupan, maupun penghapusan iklan anda.\n\n" +
+		"Salam, MobilCantik"
+
+	FormatEmailAdCreatedPaid = "Dear %s, iklan anda sudah dibuat dengan nomor iklan [%s].\n" +
+		"Berikut adalah password untuk mengaktifkan iklan anda agar dapat ditayangkan [%s].\n" +
+		"Berikut adalah kode pembayaran untuk mengaktifkan iklan anda agar dapat ditayangkan [%s]. Silahkan lakukan pembayaran sebesar %s ke rekening yang telah disediakan di MobilCantik.\n\n" +
+
+		"Gunakan password dan nomor iklan untuk melakukan konfirmasi pembayaran, penutupan, maupun penghapusan iklan anda.\n\n" +
+		"Salam, MobilCantik"
+
+	FormatEmailSuccessfullyConfirmed = "Dear %s, iklan anda sudah dengan nomor iklan [%s] sudah berhasil ditayangkan.\n" +
+		"Terima kasih sudah menggunakan jasa iklan MobilCantik.\n\n" +
+		"Salam, MobilCantik"
+)

@@ -4,10 +4,12 @@ import (
 	"crypto/rand"
 	"fmt"
 	"mime/multipart"
+	"net/smtp"
 	"os"
 	"path"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/gabriel-vasile/mimetype"
@@ -123,4 +125,21 @@ func GenerateFolder() (string, error) {
 	}
 
 	return pathdir, nil
+}
+
+func SendMail(to []string, message string) error {
+	body := "From: " + os.Getenv("MAIL_USERNAME") + "\n" +
+		"To: " + strings.Join(to, ",") + "\n" +
+		"Subject: " + os.Getenv("MAIL_SUBJECT") + "\n\n" +
+		message
+
+	auth := smtp.PlainAuth("", os.Getenv("MAIL_USERNAME"), os.Getenv("MAIL_PASSWORD"), os.Getenv("MAIL_HOST"))
+	smtpAddr := fmt.Sprintf("%s:%s", os.Getenv("MAIL_HOST"), os.Getenv("MAIL_PORT"))
+
+	err := smtp.SendMail(smtpAddr, auth, os.Getenv("MAIL_USERNAME"), to, []byte(body))
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

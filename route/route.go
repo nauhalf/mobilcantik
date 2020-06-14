@@ -19,6 +19,7 @@ import (
 	"github.com/nauhalf/mobilcantik/controller/condition"
 	"github.com/nauhalf/mobilcantik/controller/facility"
 	"github.com/nauhalf/mobilcantik/controller/fuel"
+	"github.com/nauhalf/mobilcantik/controller/image"
 	"github.com/nauhalf/mobilcantik/controller/partner"
 	"github.com/nauhalf/mobilcantik/controller/province"
 	"github.com/nauhalf/mobilcantik/controller/reportgroup"
@@ -40,6 +41,8 @@ func (cv *CustomValidator) Validate(i interface{}) error {
 func InitRoutes(e *echo.Echo) {
 
 	e.Validator = &CustomValidator{validator: validator.New()}
+
+	e.GET("/images/*", image.StreamImage)
 
 	v1 := e.Group("/v1")
 	{

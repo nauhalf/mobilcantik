@@ -12,6 +12,7 @@ import (
 	"github.com/nauhalf/mobilcantik/repository/adrepository"
 	"github.com/nauhalf/mobilcantik/repository/model"
 	"github.com/nauhalf/mobilcantik/response"
+	"github.com/nauhalf/mobilcantik/utils"
 	errorutils "github.com/nauhalf/mobilcantik/utils/error"
 )
 
@@ -139,6 +140,9 @@ func ConfirmPaymentBill(c echo.Context) error {
 		Data:    nil,
 	}
 
+	body := fmt.Sprintf(errorutils.FormatEmailSuccessfullyConfirmed, ad.Sender, strconv.FormatUint(ad.AdId, 10))
+
+	_ = utils.SendMail([]string{ad.Email}, body)
 	return c.JSON(resp.Code, resp)
 }
 

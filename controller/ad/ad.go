@@ -229,6 +229,15 @@ func Create(c echo.Context) error {
 		Data:    newAd,
 	}
 
+	var body string
+	if utils.GetMode() == 1 {
+		body = fmt.Sprintf(errorutils.FormatEmailAdCreatedFree, newAd.Sender, strconv.FormatUint(newAd.AdId, 10), password)
+	} else {
+		body = fmt.Sprintf(errorutils.FormatEmailAdCreatedPaid, newAd.Sender, strconv.FormatUint(newAd.AdId, 10), password, strconv.FormatUint(*newAd.BillId, 10), os.Getenv("AMOUNT_FEE"))
+	}
+
+	_ = utils.SendMail([]string{newAd.Email}, body)
+
 	return c.JSON(resp.Code, resp)
 }
 
@@ -748,6 +757,10 @@ func Verification(c echo.Context) error {
 		}
 		return c.JSON(resp.Code, resp)
 	}
+
+	body := fmt.Sprintf(errorutils.FormatEmailSuccessfullyConfirmed, ad.Sender, strconv.FormatUint(ad.AdId, 10))
+
+	_ = utils.SendMail([]string{ad.Email}, body)
 
 	resp := response.ResponseSuccess{
 		Code:    http.StatusOK,
