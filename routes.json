@@ -1,0 +1,2287 @@
+[
+  {
+    "method": "HEAD",
+    "path": "/v1/conditions",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/conditions/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/cities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/adclosingreasons",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/reportgroups",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/fuels/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/partners/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/adtypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/adreports",
+    "name": "github.com/nauhalf/mobilcantik/controller/adreport.Create"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/adstatustypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/adreports/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/bankaccounts/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/adtypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/adtypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/reportgroups/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/reportgroup.Delete"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/testimonials",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/fuels",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/provinces",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/provinces/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/reportgroups",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/vehicletypes",
+    "name": "github.com/nauhalf/mobilcantik/controller/vehicletype.GetAll"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/facilities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/bankaccounts",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/fuel_mapping",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/ads/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/bankaccounts",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/ads",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/conditions/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/condition.Delete"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/adstatustypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/bills/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/testimonials/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/provinces",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/bankaccounts/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/ads",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/vehicletypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/reportgroups/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/adtypes/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/adtype.Delete"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/adclosingreasons/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/partners/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/adreports",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/partners/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/reportgroups/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/bills",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/vehiclebrands",
+    "name": "github.com/nauhalf/mobilcantik/controller/vehiclebrand.Update"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/vehiclebrands/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/vehiclebrand.Delete"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/adtypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/fuels/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/fuel_mapping",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/reportgroups",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/reporttype/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/reporttype.GetById"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/ads",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/testimonial/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/testimonial.GetById"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/provinces/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/adstatustypes",
+    "name": "github.com/nauhalf/mobilcantik/controller/adstatustype.GetAll"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/partners/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/vehiclebrands/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/facilities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/ads/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/bankaccounts",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/adclosingreasons/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/reportgroup/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/reportgroup.GetById"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/reportgroups/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/reporttypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/bills/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/adstatustypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/bills",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/bills/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/fuel_mapping/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/conditions",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/cities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/adreports/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/adreport.Delete"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/cities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/adstatustypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/adreports",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/vehicletypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/testimonials/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/adtype/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/adtype.GetById"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/reporttypes",
+    "name": "github.com/nauhalf/mobilcantik/controller/reporttype.GetAll"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/vehicletypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/provinces",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/cities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/vehiclebrand/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/vehiclebrand.GetById"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/provinces",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/adreport/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/adreport.GetById"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/fuels",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/provinces/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/ads",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/provinces/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/ads",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/ads/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/vehicletypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/conditions",
+    "name": "github.com/nauhalf/mobilcantik/controller/condition.Update"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/facilities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/vehicletypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/conditions/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/adreports/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/reporttypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/adreports/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/conditions",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/adtypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/adclosingreasons",
+    "name": "github.com/nauhalf/mobilcantik/controller/adclosingreason.GetAll"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/adstatustypes",
+    "name": "github.com/nauhalf/mobilcantik/controller/adstatustype.Update"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/adstatustypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/reportgroups",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/vehicletypes",
+    "name": "github.com/nauhalf/mobilcantik/controller/vehicletype.Create"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/facilities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/provinces/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/facilities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/reporttypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/reporttypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/conditions/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/facilities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/vehicletypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/fuels/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/conditions/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/fuels",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/fuel_mapping",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/adstatustypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/testimonials/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/adclosingreasons/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/adreports/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/reporttypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/adreports",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/bills",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/partners",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/partners",
+    "name": "github.com/nauhalf/mobilcantik/controller/partner.Update"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/fuel_mapping",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/cities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/bills/confirmation-payment",
+    "name": "github.com/nauhalf/mobilcantik/controller/adconfirmation.Create"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/fuel_mapping/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/conditions",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/adtypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/cities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/testimonials",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/adtypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/adclosingreasons/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/bills/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/bills/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/vehiclebrands/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/fuel_mapping/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/facilities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/cities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/bill/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/adbill.GetById"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/fuel_mapping",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/bills",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/adreports",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/adtypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/ads/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/ads/forcedelete/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/ad.ForceDelete"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/adreports",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/conditions",
+    "name": "github.com/nauhalf/mobilcantik/controller/condition.GetAll"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/conditions",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/bankaccounts/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/ads/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/adclosingreasons/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/reportgroups/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/reportgroups/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/testimonials/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/adtypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/adtypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/reportgroups/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/adtypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/vehiclebrands/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/adtypes",
+    "name": "github.com/nauhalf/mobilcantik/controller/adtype.GetAll"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/adstatustypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/partners",
+    "name": "github.com/nauhalf/mobilcantik/controller/partner.GetAll"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/partners/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/partner.Delete"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/vehiclebrands/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/conditions/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/city/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/city.GetById"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/vehiclebrands",
+    "name": "github.com/nauhalf/mobilcantik/controller/vehiclebrand.Create"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/bankaccounts/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/bills",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/partners",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/reportgroups",
+    "name": "github.com/nauhalf/mobilcantik/controller/reportgroup.Update"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/bills/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/adclosingreason/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/adclosingreason.GetById"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/reporttypes",
+    "name": "github.com/nauhalf/mobilcantik/controller/reporttype.Update"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/bills",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/bills/verify-payment",
+    "name": "github.com/nauhalf/mobilcantik/controller/adbill.ConfirmPaymentBill"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/adreports/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/testimonials/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/vehiclebrands/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/facilities/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/facility.Delete"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/adclosingreasons/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/adtypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/adstatustypes",
+    "name": "github.com/nauhalf/mobilcantik/controller/adstatustype.Create"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/adclosingreasons",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/ads/close",
+    "name": "github.com/nauhalf/mobilcantik/controller/testimonial.Create"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/testimonials",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/vehicletypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/conditions",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/bankaccounts",
+    "name": "github.com/nauhalf/mobilcantik/controller/bankaccount.GetAll"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/conditions",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/provinces/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/fuel_mapping/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/ad-verification",
+    "name": "github.com/nauhalf/mobilcantik/controller/ad.Verification"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/vehiclebrands/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/partner/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/partner.GetById"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/ads/:id/:password",
+    "name": "github.com/nauhalf/mobilcantik/controller/ad.Delete"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/bankaccounts/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/reporttypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/bills/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/adreports/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/vehicletypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/conditions/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/facilities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/facilities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/reporttypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/vehicletypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/vehiclebrands/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/fuel_mapping/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/facilities",
+    "name": "github.com/nauhalf/mobilcantik/controller/facility.Create"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/adstatustypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/adreports",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/fuels",
+    "name": "github.com/nauhalf/mobilcantik/controller/fuel.Create"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/provinces/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/adstatustypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/cities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/facilities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/provinces",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/cities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/bankaccounts/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/adclosingreasons/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/adreports",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/adreports/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/fuels/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/adtypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/adstatustype/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/adstatustype.GetById"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/testimonials/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/adstatustypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/adstatustypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/adreports",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/vehicletypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/facilities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/cities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/partners",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/ads/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/ads/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/cities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/bankaccounts",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/adtypes",
+    "name": "github.com/nauhalf/mobilcantik/controller/adtype.Create"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/partners/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/adreports",
+    "name": "github.com/nauhalf/mobilcantik/controller/adreport.GetAll"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/testimonials/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/adstatustypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/ads/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/adreports/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/provinces/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/adstatustypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/bills/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/vehicletypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/conditions",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/provinces",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/vehiclebrands",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/facilities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/reporttypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/fuel_mapping",
+    "name": "github.com/nauhalf/mobilcantik/controller/fuel.GetMapping"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/adclosingreasons",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/partners/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/reportgroups",
+    "name": "github.com/nauhalf/mobilcantik/controller/reportgroup.Create"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/ads",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/facilities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/facilities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/provinces",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/partners",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/reporttypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/ads/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/vehiclebrands/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/adstatustypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/adclosingreasons",
+    "name": "github.com/nauhalf/mobilcantik/controller/adclosingreason.Create"
+  },
+  {
+    "method": "GET",
+    "path": "/images/*",
+    "name": "github.com/nauhalf/mobilcantik/controller/image.StreamImage"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/vehiclebrands/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/conditions/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/reporttypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/facilities",
+    "name": "github.com/nauhalf/mobilcantik/controller/facility.Update"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/bankaccounts/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/adclosingreasons/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/reportgroups/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/vehicletypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/facilities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/adstatustypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/cities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/ads",
+    "name": "github.com/nauhalf/mobilcantik/controller/ad.GetAll"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/vehiclebrands",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/facilities",
+    "name": "github.com/nauhalf/mobilcantik/controller/facility.GetAll"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/facilities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/provinces/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/ads",
+    "name": "github.com/nauhalf/mobilcantik/controller/ad.Create"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/vehicletypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/bankaccounts/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/bankaccounts",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/bankaccounts",
+    "name": "github.com/nauhalf/mobilcantik/controller/bankaccount.Create"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/vehiclebrands",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/vehiclebrands",
+    "name": "github.com/nauhalf/mobilcantik/controller/vehiclebrand.GetAll"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/vehiclebrands",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/vehicletypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/fuels/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/facilities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/ads/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/adreports/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/testimonials",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/fuels",
+    "name": "github.com/nauhalf/mobilcantik/controller/fuel.GetAll"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/bankaccounts",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/adclosingreasons/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/adclosingreason.Delete"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/province/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/province.GetById"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/adclosingreasons",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/reportgroups",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/partners/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/reportgroups",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/testimonials",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/fuel_mapping",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/fuel_mapping",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/cities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/adclosingreasons/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/reporttypes",
+    "name": "github.com/nauhalf/mobilcantik/controller/reporttype.Create"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/bills",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/request-token",
+    "name": "github.com/nauhalf/mobilcantik/controller/auth.GenerateToken"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/fuel_mapping/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/cities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/reportgroups",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/reporttypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/testimonials",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/testimonials",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/vehiclebrands",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/fuels/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/fuel.Delete"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/conditions/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/vehiclebrands",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/fuel_mapping",
+    "name": "github.com/nauhalf/mobilcantik/controller/fuel.DoMapping"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/partners",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/bankaccounts/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/adtypes",
+    "name": "github.com/nauhalf/mobilcantik/controller/adtype.Update"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/testimonials",
+    "name": "github.com/nauhalf/mobilcantik/controller/testimonial.GetAll"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/fuels/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/fuel/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/fuel.GetById"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/conditions/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/fuels",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/conditions",
+    "name": "github.com/nauhalf/mobilcantik/controller/condition.Create"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/bills/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/testimonials/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/bankaccount/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/bankaccount.GetById"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/adstatustypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/adreports/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/vehiclebrands/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/adtypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/reporttypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/reporttypes/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/reporttype.Delete"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/adreports/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/condition/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/condition.GetById"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/cities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/adclosingreasons/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/facilities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/adclosingreasons",
+    "name": "github.com/nauhalf/mobilcantik/controller/adclosingreason.Update"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/reportgroups/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/vehicletypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/vehiclebrands/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/cities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/fuel_mapping/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/bills",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/fuels",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/cities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/adtypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/provinces",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/adstatustypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/testimonials",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/fuels",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/fuels/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/cities",
+    "name": "github.com/nauhalf/mobilcantik/controller/city.GetAll"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/facility/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/facility.GetById"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/partners",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/reportgroups/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/ads",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/vehicletypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/fuel_mapping/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/conditions/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/bills",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/fuels",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/fuel_mapping",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/adclosingreasons",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/adclosingreasons",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/partners/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/vehiclebrands",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/fuels/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/cities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/reporttypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/testimonials",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/testimonials/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/partners",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/fuel_mapping",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/facilities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/provinces/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/reporttypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/reporttypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/bills",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/adstatustypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/adclosingreasons",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/adclosingreasons/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/vehicletypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/provinces",
+    "name": "github.com/nauhalf/mobilcantik/controller/province.GetAll"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/reportgroups",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/adreports",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/vehicletype/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/vehicletype.GetById"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/fuel_mapping/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/bankaccounts/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/reportgroups",
+    "name": "github.com/nauhalf/mobilcantik/controller/reportgroup.GetAll"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/bills/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/testimonials/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/fuel_mapping/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/provinces",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/adstatustypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/fuels/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/ads",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/fuels/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/provinces/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/partners/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/adtypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/reporttypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/reporttypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/ads/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/vehicletypes",
+    "name": "github.com/nauhalf/mobilcantik/controller/vehicletype.Update"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/vehicletypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/fuels",
+    "name": "github.com/nauhalf/mobilcantik/controller/fuel.Update"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/ads",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/fuel_mapping/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/adtypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/reportgroups/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/adtypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/partners",
+    "name": "github.com/nauhalf/mobilcantik/controller/partner.Create"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/vehicletypes/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/vehicletype.Delete"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/cities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/adstatustypes/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/adstatustype.Delete"
+  },
+  {
+    "method": "REPORT",
+    "path": "/v1/adtypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PROPFIND",
+    "path": "/v1/adclosingreasons",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/partners",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/reporttypes/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/cities",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/bankaccounts",
+    "name": "github.com/nauhalf/mobilcantik/controller/bankaccount.Update"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/bankaccounts",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/provinces",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/reporttypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/partners/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/ad/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/ad.GetById"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/bills",
+    "name": "github.com/nauhalf/mobilcantik/controller/adbill.GetAll"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/vehicletypes",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/conditions/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "TRACE",
+    "path": "/v1/bankaccounts",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "GET",
+    "path": "/v1/cities/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/bankaccounts/:id",
+    "name": "github.com/nauhalf/mobilcantik/controller/bankaccount.Delete"
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/reportgroups/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/bankaccounts/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/partners/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "HEAD",
+    "path": "/v1/bills/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/testimonials",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/testimonials/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "CONNECT",
+    "path": "/v1/vehiclebrands",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "OPTIONS",
+    "path": "/v1/fuels",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  },
+  {
+    "method": "POST",
+    "path": "/v1/fuels/*",
+    "name": "github.com/labstack/echo/v4.glob..func1"
+  }
+]

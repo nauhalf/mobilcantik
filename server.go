@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/labstack/echo/v4"
 	"github.com/nauhalf/mobilcantik/config"
@@ -26,5 +27,5 @@ func main() {
 	db.Open()
 
 	defer db.DBCon.Close()
-	e.Logger.Fatal(e.Start(":1234"))
+	e.Logger.Fatal(e.Start(":" + os.Getenv("API_PORT")))
 }

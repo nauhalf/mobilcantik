@@ -44,7 +44,7 @@ const (
 		"Gunakan password dan nomor iklan untuk melakukan konfirmasi pembayaran, penutupan, maupun penghapusan iklan anda.\n\n" +
 		"Salam, MobilCantik"
 
-	FormatEmailSuccessfullyConfirmed = "Dear %s, iklan anda sudah dengan nomor iklan [%s] sudah berhasil ditayangkan.\n" +
+	FormatEmailSuccessfullyConfirmed = "Dear %s, iklan anda dengan nomor iklan [%s] sudah berhasil ditayangkan.\n" +
 		"Terima kasih sudah menggunakan jasa iklan MobilCantik.\n\n" +
 		"Salam, MobilCantik"
 )
